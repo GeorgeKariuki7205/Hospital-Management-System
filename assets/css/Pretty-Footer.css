@@ -1,5 +1,5 @@
 footer {
-  background-color:#fcc028;
+  background-color:#2863fc;
   box-shadow:0 1px 1px 0 rgba(0, 0, 0, 0.12);
   box-sizing:border-box;
   width:100%;
@@ -82,12 +82,13 @@ span.new-line-span {
   color:#fff;
   font-size:14px;
   font-weight:bold;
-  margin-bottom:20px;
+  /*margin-bottom:20px;*/
+  /*border:2px solid black;*/
 }
 
 .footer-about p {
   line-height:20px;
-  color:#92999f;
+  /*color:#92999f;*/
   font-size:13px;
   font-weight:normal;
   margin:0;

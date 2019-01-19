@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="assets/css/Basic-fancyBox-Gallery.css">
     <link rel="stylesheet" href="assets/css/Header-Dark-1.css">
     <link rel="stylesheet" href="assets/css/Header-Dark.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
     <link rel="stylesheet" href="assets/css/Lightbox-Gallery.css">
     <link rel="stylesheet" href="assets/css/Navigation-with-Button.css">
@@ -39,7 +40,7 @@
 
 <body>
     <div>
-        <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-warning navigation-clean-button">
+        <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-info navigation-clean-button" style="background-color:rgb(10,57,222);">
             <div class="container"><a class="navbar-brand" href="index.html" id="brandInSmall" style="font-family:Times New Roman;"><i class="fa fa-stethoscope" style="font-size:42px;color:rgb(226,22,22);"></i>&nbsp; &nbsp; Hospital System.</a><button class="navbar-toggler"
                     data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navcol-1">
@@ -55,31 +56,31 @@
                     </ul><span class="navbar-text actions"> <a href="login.html" class="login" style="color:rgba(55,60,184,0.9);font-family:Times New Roman;"><strong>Patient Log In</strong></a><a class="btn btn-info action-button" role="button" href="sighnup.html">Sign Up</a></span></div>
             </div>
         </nav>
-        <div class="majorDiv" style="background-color:#fcc028;">
-            <div class="jumbotron jumbo">
+        <div data-bs-hover-animate="bounce" class="majorDiv" style="background-color:#fcc028;background-image:url(&quot;assets/img/pexels-photo-433267.jpeg&quot;);background-position:center;background-size:cover;background-repeat:no-repeat;">
+            <div class="jumbotron jumbo" style="background-color:rgba(233,236,239,0.73);">
                 <h1 id="inSmallSize" class="jumbotron-heading">Efficient Doctor-Patient Portal .</h1>
                 <p id="JumbotronText">Managing all The facets of the health sector and improcing lives in ways we know best.</p>
-                <p><a class="btn btn-primary" role="button" href="#" id="jumbotron-Button">Learn more</a></p>
+                <p><a class="btn btn-danger" role="button" href="login.html" id="jumbotron-Button"><strong>Patient Log In.</strong></a></p>
             </div>
         </div>
     </div>
-    <div style="background-color:#f8d3d3;padding-top : 20px;">
-        <div class="container" style="background-color:#f8d3d3;">
+    <div style="background-color:#d3e4f8;padding-top:20px;">
+        <div class="container" style="background-color:#d3e4f8;">
             <div>
                 <div class="row">
                     <div class="col-md-8 col-lg-8 col-xl-8">
-                        <h1 class="HeadingThreeColumns" style="color:rgb(20,63,219);">Portfolio.</h1>
+                        <h1 class="HeadingThreeColumns" style="color:rgb(255,1,16);">Reponsibilities.</h1>
                         <div class="row">
-                            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                                <h4 class="threeColumns"><i class="fa fa-id-card"></i>Heading</h4>
+                            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4" style="text-align:center;"><i class="fa fa-stethoscope" style="font-size:42px;color:blue;text-align : center;"></i>
+                                <h4 class="threeColumns">Basic Service</h4>
+                                <p>in 1997 &nbsp;so as to bring the Paris experience to the door steps of&nbsp;<br>kenyans . It is suituated along the busy Ngong Road&nbsp;<br></p>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4" style="text-align:center;"><i class="fa fa-book" style="color:blue;font-size:42px;"></i>
+                                <h4 class="threeColumns">Bookings &nbsp; &nbsp; &nbsp; &nbsp;.</h4>
                                 <p>in 1997 &nbsp;so as to bring the Paris experience to the door steps of&nbsp;<br>kenyans . It is suituated along the busy Ngong Road&nbsp;<br></p>
                             </div>
                             <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                                <h4 class="threeColumns"><i class="fa fa-user-circle"></i>Heading</h4>
-                                <p>in 1997 &nbsp;so as to bring the Paris experience to the door steps of&nbsp;<br>kenyans . It is suituated along the busy Ngong Road&nbsp;<br></p>
-                            </div>
-                            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                                <h4 class="threeColumns"><i class="fa fa-medkit"></i>Heading</h4>
+                                <h4 class="threeColumns"><i class="fa fa-medkit" style="font-size:42px;"></i>Emmergencies.</h4>
                                 <p>in 1997 &nbsp;so as to bring the Paris experience to the door steps of&nbsp;<br>kenyans . It is suituated along the busy Ngong Road&nbsp;<br></p>
                             </div>
                         </div>
@@ -95,7 +96,7 @@
             </div>
         </div>
     </div>
-    <div style="background-color:#f8d3d3;">
+    <div style="background-color:#d3e4f8;">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
@@ -123,34 +124,50 @@
                         <li><a href="#"><strong>Patient Log In .</strong></a></li>
                         <li><a href="#"><strong>Patient Registration .</strong></a></li>
                         <li><a href="#"><strong>Our Contacts.</strong></a></li>
+                        <li><a href="#"><strong>FAQs.</strong></a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    <footer class="footer">
+    <div style="background-color:#f1655c;">
+        <div class="container">
+            <h1 style="text-align : center;">In Association With :</h1>
+            <div class="row flex-box flex-wrap-wrap">
+                <div class="col-sm-4 flex-box flex-justify-center flex-align-center"><a href="assets/img/i.png" class="fancybox" rel="gallery1" title="Kenyan Gouvernment."><img class="img-fluid" src="assets/img/i.png" alt="Kenyan Gouvernment." data-bs-hover-animate="flash" title="Kenyan Gouvernment."></a></div>
+                <div class="col-sm-4 flex-box flex-justify-center flex-align-center"><a href="assets/img/ix.png" class="fancybox" rel="gallery1" title="UNCEF"><img class="img-fluid" src="assets/img/ix.png" data-bs-hover-animate="flash" title="UNICEF"></a></div>
+                <div class="col-sm-4 flex-box flex-justify-center flex-align-center"><a href="assets/img/inax.png" class="fancybox" rel="gallery1" title="Aghakhan University Hospital."><img class="img-fluid" src="assets/img/inax.png" data-bs-hover-animate="flash" title="Aghakhan University Hospital."></a></div>
+                <div class="col-sm-4 flex-box flex-justify-center flex-align-center"><a href="assets/img/knx.jpg" class="fancybox" rel="gallery1" title="Kenyatta National Hospital ."><img class="img-fluid" src="assets/img/knx.jpg" data-bs-hover-animate="flash" title="Kenyatta National Hospital ."></a></div>
+                <div class="col-sm-4 flex-box flex-justify-center flex-align-center"><a href="assets/img/index.png" class="fancybox" rel="gallery1" title="USAID"><img class="img-fluid" src="assets/img/index.png" data-bs-hover-animate="flash" title="USAID"></a></div>
+                <div class="col-sm-4 flex-box flex-justify-center flex-align-center"><a href="assets/img/uk.png" class="fancybox" rel="gallery1" title="UKAID"><img class="img-fluid" src="assets/img/uk.png" data-bs-hover-animate="flash" title="UKAID"></a></div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer" style="background-color:#1aa0be;">
         <div class="row">
             <div class="col-sm-6 col-md-4 footer-navigation">
-                <h3><a href="#">Company<span>logo </span></a></h3>
-                <p class="links"><a href="#">Home</a><strong> · </strong><a href="#">Blog</a><strong> · </strong><a href="#">Pricing</a><strong> · </strong><a href="#">About</a><strong> · </strong><a href="#">Faq</a><strong> · </strong><a href="#">Contact</a></p>
-                <p class="company-name">Company Name © 2015 </p>
+                <h3><a href="#">Hospital Management .</a></h3>
+                <p class="links"><a href="#">Home</a><strong> · </strong><a href="#">Feedback.</a><strong> · </strong><a href="#">Locations</a><strong> · </strong><a href="#">About</a><strong> · </strong><a href="#">Faq</a><strong> · </strong><a href="#">Contact</a></p>
+                <p
+                    class="company-name" style="color:rgb(255,255,255);">Hospital Management System. © 2019</p>
             </div>
             <div class="col-sm-6 col-md-4 footer-contacts">
                 <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
-                    <p><span class="new-line-span">21 Revolution Street</span> Paris, France</p>
+                    <p><span class="new-line-span">Consolidated Biulding 23 Floor</span> Upper Hill , Nairobi , Kenya.</p>
                 </div>
                 <div><i class="fa fa-phone footer-contacts-icon"></i>
-                    <p class="footer-center-info email text-left"> +1 555 123456</p>
+                    <p class="footer-center-info email text-left"> +254792107437</p>
                 </div>
                 <div><i class="fa fa-envelope footer-contacts-icon"></i>
-                    <p> <a href="#" target="_blank">support@company.com</a></p>
+                    <p> <a href="#" target="_blank" style="color:rgb(3,97,252);">management@management.t</a></p>
                 </div>
             </div>
             <div class="clearfix"></div>
-            <div class="col-md-4 footer-about">
-                <h4>About the company</h4>
-                <p> Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet. </p>
-                <div class="social-links social-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-github"></i></a></div>
+            <div class="col-md-4 footer-about ourDedics">
+                <h4>Site Created and Maintained By :&nbsp;</h4>
+                <h5><strong>JohKariMo Developers</strong></h5>
+                <p style="color:rgb(255,255,255);"> A software comapny dedicated to meet All Your Software needs. Contact us or visit us for more to do with development of Web Applications , Android Apps , &nbsp;Home Automatio etc .</p>
+                <div class="social-links social-icons"><a href="facebook.com"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-github"></i></a></div>
             </div>
         </div>
     </footer>
@@ -159,6 +176,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
     <script src="assets/js/Basic-fancyBox-Gallery2.js"></script>
+    <script src="assets/js/bs-animation.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
     <script src="assets/js/new.js"></script>
     <script src="assets/js/Sortable-filter-gallery-portfolio.js"></script>

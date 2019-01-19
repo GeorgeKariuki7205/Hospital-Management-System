@@ -37,7 +37,7 @@
 }
 
 .majorDiv {
-  margin-top:20px;
+  margin-top:85px;
   background-image:url;
   padding:25px;
   padding-top:80px;
@@ -55,10 +55,11 @@
 
 .newColumn {
   border-left:2px solid black;
+  border-right:2px solid black;
 }
 
 body {
-  /*background-color:rgb(237,174,174);*/
+  /*background-color:#d3e4f8;*/
 }
 
 @media (max-width: 450px) {
@@ -84,5 +85,9 @@ body {
 
 .text {
   text-align:center;
+}
+
+.ourDedics {
+  border:1px dotted black;
 }
 
