@@ -91,3 +91,20 @@ body {
   border:1px dotted black;
 }
 
+@media (max-width: 500px) {
+  .jumbotron.jumbo {
+  }
+}
+
+@media (max-width: 500px) {
+  .majorDiv {
+    margin-top:0px;
+  }
+}
+
+@media (max-width: 500px) {
+  .patnersHeaders {
+    font-size:26px;
+  }
+}
+
