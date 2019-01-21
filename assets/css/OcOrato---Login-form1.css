@@ -58,7 +58,7 @@
 }
 
 body {
-  background-image:url("../../assets/img/Wallpapers 1366x768.jpg");
+  /*background-image:url("../../assets/img/Wallpapers 1366x768.jpg");*/
   background-size:cover;
   background-repeat:no-repeat;
   height:auto;
