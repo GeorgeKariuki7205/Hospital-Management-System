@@ -11,8 +11,10 @@ if($_SERVER['REQUEST_METHOD']== "POST"){
 	$email = $_POST['email'];
 	$phone = $_POST['phone'];
 	$callTime  = $_POST['callTime'];
+	$residence = $_POST['residenc'];
 	
 	ECHO $fname."  ".$lName."  ".$date."  ".$birthCertNumber."  ". $nhifNumber."  ".$kraNumber."  ".$email ."  ".$phone."  ".$callTime;
+	
 
 }
 
