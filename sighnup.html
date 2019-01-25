@@ -46,6 +46,7 @@
       type="image/png" 
       href="assets/img/Hospital-128.png">
 <title>Hospitals Management .</title>
+<base href="http://hospitalmanagementproject.tk/">
 </head>
 
 <body style="background-color:rgb(255,255,255);background-image:url(&quot;none&quot;);">
@@ -123,7 +124,8 @@
                                     <div class="col-12 col-sm-6 col-md-12 col-lg-6">
                                         <div class="form-group"><label for="from-phone">NHIF number</label><span class="required-input">*</span>
                                             <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-id-card"></i></span></div><input class="form-control" type="text" name="nhifNumber" required="" placeholder="NHIF Number" id="nhifNumber"></div>
+                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-id-card"></i></span></div><input class="form-control" type="text" name="nhifNumber" required="" placeholder="NHIF Number" autocomplete="on" inputmode="numeric"
+                                                    id="nhifNumber"></div>
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-12 col-lg-6">
@@ -140,7 +142,8 @@
                             <div class="col-12 col-sm-6 col-md-12 col-lg-6">
                                 <div class="form-group"><label for="from-phone">Email</label><span class="required-input">*</span>
                                     <div class="input-group">
-                                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-phone"></i></span></div><input class="form-control" type="text" name="phone" required="" placeholder="Primary Phone" maxlength="10" minlength="10" id="phone"></div>
+                                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-envelope-o" style="background-color:#ffffff;"></i></span></div><input class="form-control" type="text" name="email" required="" placeholder="Email Address" inputmode="email"
+                                            id="phone"></div>
                                 </div>
                             </div>
                             <div class="col-12 col-sm-6 col-md-12 col-lg-6">
@@ -155,7 +158,7 @@
                             <div class="col-12 col-sm-6 col-md-12 col-lg-6">
                                 <div class="form-group"><label for="from-phone">Phone</label><span class="required-input">*</span>
                                     <div class="input-group">
-                                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-phone"></i></span></div><input class="form-control" type="text" name="phone" required="" placeholder="Primary Phone" id="phone"></div>
+                                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-phone"></i></span></div><input class="form-control" type="text" name="phone" required="" placeholder="Primary Phone" inputmode="tel" id="phone"></div>
                                 </div>
                             </div>
                             <div class="col-12 col-sm-6 col-md-12 col-lg-6">
@@ -168,7 +171,7 @@
                         <div class="form-group">
                             <div class="form-row">
                                 <div class="col"><button class="btn btn-warning btn-block" type="reset"><i class="fa fa-undo"></i> Reset</button></div>
-                                <div class="col"><a class="btn btn-success btn-block" role="button" href="confirmation.html"><strong>NEXT&nbsp;</strong><i class="fa fa-forward" style="background-color:rgba(0,0,0,0);color:rgb(255,255,255);"></i></a></div>
+                                <div class="col"><button class="btn btn-success btn-block" type="submit"><strong>NEXT&nbsp;</strong><i class="fa fa-forward" style="background-color:rgba(0,0,0,0);color:rgb(255,255,255);"></i></button></div>
                             </div>
                         </div>
                         <hr class="d-flex d-md-none">
