@@ -46,26 +46,30 @@
       type="image/png" 
       href="assets/img/Hospital-128.png">
 <title>Hospitals Management .</title>
+<base href="http://hospitalmanagementproject.tk/">
 </head>
 
 <body>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery/1.12.4/jquery.min.js"></script>
-    <script src="assets/js/Basic-fancyBox-Gallery2.js"></script>
-    <script src="assets/js/Analog_Clock.js"></script>
-    <script src="assets/js/Contact-Form-v2-Modal--Full-with-Google-Map.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
-    <script src="assets/js/jquery.validate.js"></script>
-    <script src="assets/js/jquery.validate.min.js"></script>
-    <script src="assets/js/new.js"></script>
-    <script src="assets/js/Sortable-filter-gallery-portfolio.js"></script>
-    <script src="assets/js/bs-animation.js"></script>
-    <script src="assets/js/jquery-3.3.1.js"></script>
-    <script src="assets/js/validation.js"></script>
+    <div style="background-color:#a5d78e;">
+        <div class="container">
+            <h2 style="text-align:center; font-family: &quot;Times New Roman&quot;">VALIDATING FORM IS HERE :&nbsp;</h2>
+            <form method="get" id="forms">
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-group"><label>First Name :</label><input class="form-control" type="text" name="email" placeholder="First Name"></div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 offset-md-3">
+                        <div class="form-group"><button class="btn btn-danger btn-block btn-lg submit-button" type="submit" id="submit-button" style="font-family: &quot;Times New Roman&quot;"><strong>SUBMIT DATA</strong></button></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src = "assets/js/jquery.min.js"></script>
+    <script src = "jquery-validation-1.19.0/dist/jquery.validate.min.js"></script>
+    <script src = "news.js"></script>
 </body>
 
 </html>
