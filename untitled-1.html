@@ -61,64 +61,95 @@
 <title>Hospitals Management .</title>
 </head>
 
-<body>
-    <div>
-        <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-info navigation-clean-button" style="background-color:rgb(10,57,222);">
-            <div class="container"><a class="navbar-brand" href="index.html" id="brandInSmall" style="font-family:Times New Roman;"><i class="fa fa-stethoscope" style="font-size:42px;color:rgb(226,22,22);"></i>&nbsp; &nbsp; Hospital System.</a><button class="navbar-toggler"
-                    data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navcol-1">
-                    <ul class="nav navbar-nav mr-auto">
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="index.html" style="color:rgb(11,12,12);font-size:20px;font-family:Times New Roman;"><strong>Home .</strong></a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="about.html" style="color:rgb(0,0,0);font-size:20px;font-family:Times New Roman;"><strong>About </strong>.</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="contacts.html" style="color:rgb(1,1,1);font-size:20px;font-family:Times New Roman;"><strong>Contacts.</strong></a></li>
-                        <li class="dropdown"><a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" style="color:rgb(0,0,0);font-size:20px;font-family:Times New Roman;"><strong>Locations</strong></a>
-                            <div class="dropdown-menu"
-                                role="menu"><a class="dropdown-item" role="presentation" href="locations.html"><strong>Nairobi</strong></a><a class="dropdown-item" role="presentation" href="locations.html"><strong>Mombasa</strong></a><a class="dropdown-item" role="presentation"
-                                    href="locations.html"><strong>Kisumu</strong></a></div>
-                        </li>
-                    </ul><span class="navbar-text actions"> <a href="login.html" class="login" style="color:rgba(55,60,184,0.9);font-family:Times New Roman;"><strong>Patient Log In</strong></a><a class="btn btn-info action-button" role="button" href="sighnup.php" data-bs-hover-animate="bounce">Sign Up</a></span></div>
-            </div>
-        </nav>
-    </div>
-    <div class="darkHeader">
-        <div class="header-dark">
-            <div class="container hero">
-                <div class="row">
-                    <div class="col-md-8 offset-md-2">
-                        <h1 class="text-center"><span style="text-decoration: underline;">Efficient Doctor-Patient Portal .</span></h1>
-                        <h4 style="color:#ffffff;font-family:'Gentium Basic', serif; text-align : center;">Providing Efficient Services to all In The Health Sector.</h4><img class="img-fluid" src="assets/img/pexels-photo-263210.jpeg"></div>
+<body><div class="wrapper">
+            <!-- Sidebar Holder -->
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <h3>Bootstrap Sidebar</h3>
+                    <strong>BS</strong>
                 </div>
+
+                <ul class="list-unstyled components">
+                    <li class="active">
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+                            <i class="glyphicon glyphicon-home"></i>
+                            Home
+                        </a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li><a href="#">Home 1</a></li>
+                            <li><a href="#">Home 2</a></li>
+                            <li><a href="#">Home 3</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="glyphicon glyphicon-briefcase"></i>
+                            About
+                        </a>
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
+                            <i class="glyphicon glyphicon-duplicate"></i>
+                            Pages
+                        </a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                            <li><a href="#">Page 1</a></li>
+                            <li><a href="#">Page 2</a></li>
+                            <li><a href="#">Page 3</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="glyphicon glyphicon-link"></i>
+                            Portfolio
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="glyphicon glyphicon-paperclip"></i>
+                            FAQ
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="glyphicon glyphicon-send"></i>
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Page Content Holder -->
+            <div id="content">
+
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                <i class="glyphicon glyphicon-align-left"></i>
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                </nav>
             </div>
         </div>
-    </div>
-    <footer class="footer" style="background-color:#1aa0be;">
-        <div class="row">
-            <div class="col-sm-6 col-md-4 footer-navigation">
-                <h3><a href="#">Hospital Management .</a></h3>
-                <p class="links"><a href="#">Home</a><strong> · </strong><a href="#">Feedback.</a><strong> · </strong><a href="#">Locations</a><strong> · </strong><a href="#">About</a><strong> · </strong><a href="#">Faq</a><strong> · </strong><a href="#">Contact</a></p>
-                <p
-                    class="company-name" style="color:rgb(255,255,255);">Hospital Management System. © 2019</p>
-            </div>
-            <div class="col-sm-6 col-md-4 footer-contacts">
-                <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
-                    <p><span class="new-line-span">Consolidated Biulding 23 Floor</span> Upper Hill , Nairobi , Kenya.</p>
-                </div>
-                <div><i class="fa fa-phone footer-contacts-icon"></i>
-                    <p class="footer-center-info email text-left"> +254792107437</p>
-                </div>
-                <div><i class="fa fa-envelope footer-contacts-icon"></i>
-                    <p> <a href="#" target="_blank" style="color:rgb(3,97,252);">management@management.t</a></p>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="col-md-4 footer-about ourDedics">
-                <h4>Site Created and Maintained By :&nbsp;</h4>
-                <h5><strong>JohKariMo Developers</strong></h5>
-                <p style="color:rgb(255,255,255);"> A software comapny dedicated to meet All Your Software needs. Contact us or visit us for more to do with development of Web Applications , Android Apps , &nbsp;Home Automatio etc .</p>
-                <div class="social-links social-icons"><a href="facebook.com"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-github"></i></a></div>
-            </div>
-        </div>
-    </footer>
+
+
+
+
+
+        <!-- jQuery CDN -->
+         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+         <!-- Bootstrap Js CDN -->
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+         <script type="text/javascript">
+             $(document).ready(function () {
+                 $('#sidebarCollapse').on('click', function () {
+                     $('#sidebar').toggleClass('active');
+                 });
+             });
+         </script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>

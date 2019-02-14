@@ -18,6 +18,8 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
    echo $numRows;
    if($numRows == 1){
 	   echo "LOGIN SUCCESSSFUL.";
+	   
+	   header('location: logedin.html');
    }
    else{
 	   echo"LOGIN FAILED.";

@@ -9,7 +9,6 @@
     <title>Hospital</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono">
@@ -28,8 +27,6 @@
     <link rel="stylesheet" href="assets/css/Analog_Clock.css">
     <link rel="stylesheet" href="assets/css/Basic-fancyBox-Gallery.css">
     <link rel="stylesheet" href="assets/css/Contact-Form-v2-Modal--Full-with-Google-Map.css">
-    <link rel="stylesheet" href="assets/css/Footer-Basic.css">
-    <link rel="stylesheet" href="assets/css/Footer-Dark.css">
     <link rel="stylesheet" href="assets/css/Header-Dark-1.css">
     <link rel="stylesheet" href="assets/css/Header-Dark.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
@@ -43,9 +40,7 @@
     <link rel="stylesheet" href="assets/css/Pretty-Footer-1.css">
     <link rel="stylesheet" href="assets/css/Pretty-Footer-2.css">
     <link rel="stylesheet" href="assets/css/Pretty-Footer.css">
-    <link rel="stylesheet" href="assets/css/Sidebar-Menu-1.css">
     <link rel="stylesheet" href="assets/css/Sidebar-Menu.css">
-    <link rel="stylesheet" href="assets/css/Sidebar-Menu1-1.css">
     <link rel="stylesheet" href="assets/css/Sidebar-Menu1.css">
     <link rel="stylesheet" href="assets/css/SIdebar-Responsive-2.css">
     <link rel="stylesheet" href="assets/css/SIdebar-Responsive-21.css">
@@ -60,7 +55,9 @@
       href="assets/img/Hospital-128.png">
 <title>Hospitals Management .</title>
 </head>
-
+<?php
+include('registration.php');
+?>
 <body style="background-color:rgb(255,255,255);background-image:url(&quot;none&quot;);">
     <div class="navbar" style="margin-top:10px;">
         <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-info navigation-clean-button" style="background-color:rgb(10,57,222);">
@@ -84,7 +81,7 @@
         <div class="container-fluid">
             <h1 style="font-family:times new roman;text-align:center;">Registration Form.</h1>
             <hr>
-            <form action="registration.php" method="post" id="contactForm"><input class="form-control" type="hidden" name="Introduction" value="This email was sent from www.awebsite.com"><input class="form-control" type="hidden" name="subject" value="Awebsite.com Contact Form"><input class="form-control" type="hidden"
+            <form action="sighnup.php" method="post" id="contactForm"><input class="form-control" type="hidden" name="Introduction" value="This email was sent from www.awebsite.com"><input class="form-control" type="hidden" name="subject" value="Awebsite.com Contact Form"><input class="form-control" type="hidden"
                     name="to" value="email@awebsite.com">
                 <div class="form-row">
                     <div class="col-md-6">
@@ -101,7 +98,7 @@
                                     <div class="col-12 col-sm-4 col-md-4 col-lg-4">
                                         <div class="form-group invalid"><label for="from-phone">First name</label><span class="required-input">*</span>
                                             <div class="input-group has-danger">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user"></i></span></div><input class="form-control has-error" type="text" name="fName" required="" placeholder="First Name." pattern="[a-z]" id="fName"></div>
+                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user"></i></span></div><input class="form-control has-error" type="text" name="fName" required="" placeholder="First Name." id="fName"></div>
                                             <span
                                                 id="FNameError" style="color:red;"></span>
                                         </div>
@@ -109,7 +106,7 @@
                                     <div class="col-12 col-sm-4 col-md-4 col-lg-4">
                                         <div class="form-group"><label for="from-phone">Last Name .</label><span class="required-input">*</span>
                                             <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user"></i></span></div><input class="form-control" type="text" name="Lname" required="" placeholder="Last Name." pattern="[a-z]" autocomplete="on" id="Lname"></div>
+                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user"></i></span></div><input class="form-control" type="text" name="Lname" required="" placeholder="Last Name." autocomplete="on" id="Lname"></div>
                                             <span
                                                 id="LNameError" style="color:red;"></span>
                                         </div>
@@ -117,7 +114,7 @@
                                     <div class="col-12 col-sm-4 col-md-4 col-lg-4">
                                         <div class="form-group"><label for="from-phone">Sur Name</label><span class="required-input">*</span>
                                             <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user"></i></span></div><input class="form-control" type="text" name="Sname" required="" placeholder="Sur Name." pattern="[a-z]" autocomplete="on" id="SName"></div>
+                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user"></i></span></div><input class="form-control" type="text" name="Sname" required="" placeholder="Sur Name." autocomplete="on" id="SName"></div>
                                             <span
                                                 id="SNameError" style="color:red;"></span>
                                         </div>
@@ -127,13 +124,13 @@
                                     <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                                         <div class="form-group"><label for="from-phone">Date Of Birth</label><span class="required-input">*</span>
                                             <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-calendar"></i></span></div><input class="form-control" type="date" name="date" required="" id="date"></div>
+                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-calendar"></i></span></div><input class="form-control" type="date" name="date" required="" id="date"><span id="dateError" style="color:red;"></span></div>
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                                         <div class="form-group"><label for="from-phone">Birth Certificate Number.</label><span class="required-input">*</span>
                                             <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-certificate"></i></span></div><input class="form-control" type="number" name="birthCertNumber" required="" placeholder="Certificate number ." minlength="3"
+                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-certificate"></i></span></div><input class="form-control" type="text" name="birthCertNumber" required="" placeholder="Certificate number ." minlength="3"
                                                     autocomplete="on" inputmode="numeric" id="birthCertNumber"></div><span id="BirthCertificateNoError" style="color:red;"></span></div>
                                     </div>
                                 </div>
@@ -141,13 +138,13 @@
                                     <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                                         <div class="form-group"><label for="from-phone">NHIF number</label><span class="required-input">*</span>
                                             <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-id-card"></i></span></div><input class="form-control" type="number" name="nhifNumber" required="" placeholder="NHIF Number" maxlength="3" autocomplete="on"
+                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-id-card"></i></span></div><input class="form-control" type="text" name="nhifNumber" required="" placeholder="NHIF Number" maxlength="3" autocomplete="on"
                                                     inputmode="numeric" id="nhifNumber"></div><span id="NHIFNoError"></span></div>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                                         <div class="form-group"><label for="from-phone">KRA Number .</label><span class="required-input">*</span>
                                             <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-id-card-o"></i></span></div><input class="form-control" type="number" name="kraNumber" required="" placeholder="KRA Number" autocomplete="on" inputmode="numeric"
+                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-id-card-o"></i></span></div><input class="form-control" type="text" name="kraNumber" required="" placeholder="KRA Number" autocomplete="on" inputmode="numeric"
                                                     id="kraNumber"></div><span id="KRANoError"></span></div>
                                     </div>
                                 </div>
@@ -155,15 +152,15 @@
                         </div>
                         <div class="form-row">
                             <div class="col-12 col-sm-6 col-md-6 col-lg-6">
-                                <div class="form-group"><label for="from-phone">Email</label><span class="required-input">*</span>
+                                <div class="form-group"><label for="from-phone">Email </label><span class="required-input">*</span>
                                     <div class="input-group">
-                                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-envelope-o" style="background-color:#ffffff;"></i></span></div><input class="form-control" type="text" name="email" required="" placeholder="Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                                            inputmode="email" id="phone"></div><span id="EmailError"></span></div>
+                                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-envelope-o" style="background-color:#ffffff;"></i></span></div><input class="form-control" type="text" name="email" required="" placeholder="Email Address"
+                                            inputmode="email" id="email"></div><span id="EmailError"></span></div>
                             </div>
                             <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                                 <div class="form-group"><label for="from-calltime">Residence *</label>
                                     <div class="input-group">
-                                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-location-arrow"></i></span><input class="form-control" type="text" name="residence" required="" placeholder="Residence ." id="residence"></div>
+                                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-location-arrow"></i></span><input class="form-control" type="text" name="residence" placeholder="Residence ." id="residence"></div>
                                     </div><span id="ResidenceError" style="color:red;"></span></div>
                             </div>
                         </div>
@@ -183,7 +180,7 @@
                         <div class="form-group">
                             <div class="form-row">
                                 <div class="col"><button class="btn btn-warning btn-block" type="reset"><i class="fa fa-undo"></i> Reset</button></div>
-                                <div class="col"><button class="btn btn-success btn-block" type="submit"><strong>NEXT&nbsp;</strong><i class="fa fa-forward" style="background-color:rgba(0,0,0,0);color:rgb(255,255,255);"></i></button></div>
+                                <div class="col"><button class="btn btn-success btn-block" type="submit" id = "submit"><strong>NEXT&nbsp;</strong><i class="fa fa-forward" style="background-color:rgba(0,0,0,0);color:rgb(255,255,255);"></i></button></div>
                             </div>
                         </div>
                         <hr class="d-flex d-md-none">
@@ -315,8 +312,8 @@
     <script src="assets/js/Sortable-filter-gallery-portfolio.js"></script>
     <script src="assets/js/bs-animation.js"></script>
     <script src="assets/js/jquery-3.3.1.js"></script>
-    <script src="assets/js/Sidebar-Menu.js"></script>
-    <script src="assets/js/validation.js"></script>
+    <script src="assets/js/Sidebar-Menu.js"></script>    
+	<script src = "sighnupValidation.js"></script>
 </body>
 
 </html>
