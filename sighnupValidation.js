@@ -73,6 +73,7 @@ $(function(){
 					 'border':'2px solid green',
 					 'background-color': '#cbe6b6'
 				 });
+				 FNameError.text(" ");
 			    firstNameFlag = false;
 			}
 		}

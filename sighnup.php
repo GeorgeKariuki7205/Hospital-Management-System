@@ -1,3 +1,125 @@
+    <?php
+	include('phpFiles/databaseConnection.php');
+	if($_SERVER['REQUEST_METHOD']== "POST"){
+				   $errors = null;
+	   
+	 function cleanUpData($data){
+		$data = trim($data);
+		$data = stripslashes($data);
+		$data = strip_tags($data);
+		
+		return $data;
+	}
+	
+	$fname = 				cleanUpData($_POST['fName']);
+    $lName =            	cleanUpData($_POST['Lname']);
+	$surName =          	cleanUpData($_POST['Sname']); 
+    $date =             	cleanUpData($_POST['date']);
+	$birthCertNumber =   	cleanUpData($_POST['birthCertNumber']);
+	$nhifNumber  =       	cleanUpData($_POST['nhifNumber']);
+	$kraNumber  =       	cleanUpData($_POST['kraNumber']);
+	$email =              	cleanUpData($_POST['email']);
+	$phone =            	cleanUpData($_POST['phone']);
+	$callTime  =        	cleanUpData($_POST['callTime']);
+	$residence =        	cleanUpData($_POST['residence']);
+	
+	$errors = array();
+		
+			if(strlen($fname) == 0){	
+      	  array_push($errors , 'The First Name cannot be Empty.');
+	}
+	else if(is_numeric($fname)){
+         array_push($errors,'The First Name field cannot be numeric.');	
+	}
+	
+	//VALIDATING THE SECOND NAME.
+	if(strlen($lName) == 0){	
+      	  array_push($errors , 'Last name cannot be Empty.');
+	}
+	else if(is_numeric($lName)){
+         array_push($errors,'The  Last name field cannot be numeric.')	;	
+	}
+	
+	//VALIDATING THE SURNAME.
+	if(strlen($surName) == 0){	
+      	  array_push($errors , 'The Sur name cannot be Empty.');
+	}
+	else if(is_numeric($surName)){
+         array_push($errors,'The SurName name field cannot be numeric.')	;	
+	}
+	
+	//VALIDATING THE DATE.
+	if(strlen($date) == 0){
+		array_push($errors, 'The date should not be empty.');
+	}
+	
+	//VALIDATING THE BIRTH CERTIFICATE NUMBER.
+	if(strlen($birthCertNumber) == 0){
+		array_push($errors,'Birth Certificate Numbr Should Not Be Empty.');
+	}
+	else if(!(is_numeric($birthCertNumber))){
+		array_push($errors,'Birth Certificate Number Is Invalid.');
+	}
+	
+	//VALIDATING THE NHIF NUMBER.
+	if(strlen($nhifNumber) == 0){
+		array_push($errors,'NHIF Numbr Should Not Be Empty.');
+	}
+	else if(!(is_numeric($nhifNumber))){
+		array_push($errors,'Birth Certificate Number Is Invalid.');
+	}
+	
+	//VALIDATING THE KRA NUMBER.
+	
+	if(strlen($kraNumber) == 0) {
+		array_push($errors,'KRA Numbr Should Not Be Empty.');
+	}
+	else if(!(is_numeric($kraNumber))){
+		array_push($errors,'KRA Number Is Invalid.');
+	}
+	
+	//VALIDATING PHONE NUMBER.
+		if(strlen($phone) == 0){
+		array_push($errors,'Phone Numbr Should Not Be Empty.');
+	}
+	else if(!(is_numeric($phone))){
+		array_push($errors,'Phone Number Is Invalid.');
+	}
+	
+	//validating the email address.
+	if(strlen($email) == 0){
+		array_push($errors, 'The Email Address Should not be empty.');
+	}
+	else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+       array_push($errors,'Invalid Email Address.');
+    }
+	
+	if(count($errors) == 0){
+		 if($conn){
+		  $sql = "insert into patient_details(Fname,Lname,SurName,phone_number,email,Residence,birthCertificateNumber,kraNumber,NhifNumber,callTime,Date_Of_Birth) values('".$fname. "','".$lName."','".$surName."','".$phone."','".$email."','".$residence."','".$birthCertNumber."','".$kraNumber."','".$nhifNumber."','".$callTime."','".$date ."');";
+	      $valid = mysqli_query($conn,$sql);
+		  if($valid){
+			  $sql2 = "insert into patient_verification (username,password,patient_id) values ('".$email."','".$nhifNumber."','". 1 ."');";
+			  $valid2 = mysqli_query($conn,$sql2);
+			  if($valid2){
+				  
+				   header('Location:login.html'); 
+			  }
+			 else{
+				echo mysqli_error($conn);
+			 }
+		  }
+		  else{
+			  mysqli_error($conn);
+		  }
+	  }
+	  else{
+		  die("The database connection was not successful.");
+	  }
+	}
+	}
+	
+?>
 <!DOCTYPE html>
 <html>
 
@@ -55,9 +177,6 @@
       href="assets/img/Hospital-128.png">
 <title>Hospitals Management .</title>
 </head>
-<?php
-include('registration.php');
-?>
 <body style="background-color:rgb(255,255,255);background-image:url(&quot;none&quot;);">
     <div class="navbar" style="margin-top:10px;">
         <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-info navigation-clean-button" style="background-color:rgb(10,57,222);">
@@ -81,6 +200,16 @@ include('registration.php');
         <div class="container-fluid">
             <h1 style="font-family:times new roman;text-align:center;">Registration Form.</h1>
             <hr>
+			<?php
+			      	        if(!empty($errors)){
+				foreach($errors as $key){
+					echo "<div class=\"alert alert-danger\">
+  <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
+  <strong>Warning!</strong>".$key."
+</div>";
+				}
+			}
+			?>
             <form action="sighnup.php" method="post" id="contactForm"><input class="form-control" type="hidden" name="Introduction" value="This email was sent from www.awebsite.com"><input class="form-control" type="hidden" name="subject" value="Awebsite.com Contact Form"><input class="form-control" type="hidden"
                     name="to" value="email@awebsite.com">
                 <div class="form-row">
@@ -98,7 +227,7 @@ include('registration.php');
                                     <div class="col-12 col-sm-4 col-md-4 col-lg-4">
                                         <div class="form-group invalid"><label for="from-phone">First name</label><span class="required-input">*</span>
                                             <div class="input-group has-danger">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user"></i></span></div><input class="form-control has-error" type="text" name="fName" required="" placeholder="First Name." id="fName"></div>
+                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user"></i></span></div><input class="form-control has-error" type="text" value = "<?php if(isset($fname)){echo $fname;}?>" name="fName" required="" placeholder="First Name." id="fName"></div>
                                             <span
                                                 id="FNameError" style="color:red;"></span>
                                         </div>
@@ -106,7 +235,7 @@ include('registration.php');
                                     <div class="col-12 col-sm-4 col-md-4 col-lg-4">
                                         <div class="form-group"><label for="from-phone">Last Name .</label><span class="required-input">*</span>
                                             <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user"></i></span></div><input class="form-control" type="text" name="Lname" required="" placeholder="Last Name." autocomplete="on" id="Lname"></div>
+                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user"></i></span></div><input class="form-control" type="text" value = "<?php if(isset($lName)){echo $lName;}?>"name="Lname" required="" placeholder="Last Name." autocomplete="on" id="Lname"></div>
                                             <span
                                                 id="LNameError" style="color:red;"></span>
                                         </div>
@@ -114,7 +243,7 @@ include('registration.php');
                                     <div class="col-12 col-sm-4 col-md-4 col-lg-4">
                                         <div class="form-group"><label for="from-phone">Sur Name</label><span class="required-input">*</span>
                                             <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user"></i></span></div><input class="form-control" type="text" name="Sname" required="" placeholder="Sur Name." autocomplete="on" id="SName"></div>
+                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user"></i></span></div><input class="form-control" type="text" name="Sname"  value = "<?php if(isset($surName)){echo $surName;}?>" required="" placeholder="Sur Name." autocomplete="on" id="SName"></div>
                                             <span
                                                 id="SNameError" style="color:red;"></span>
                                         </div>
@@ -124,13 +253,13 @@ include('registration.php');
                                     <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                                         <div class="form-group"><label for="from-phone">Date Of Birth</label><span class="required-input">*</span>
                                             <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-calendar"></i></span></div><input class="form-control" type="date" name="date" required="" id="date"><span id="dateError" style="color:red;"></span></div>
+                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-calendar"></i></span></div><input class="form-control" type="date" name="date" value = "<?php if(isset($date)){echo $date;}?>"required="" id="date"><span id="dateError" style="color:red;"></span></div>
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                                         <div class="form-group"><label for="from-phone">Birth Certificate Number.</label><span class="required-input">*</span>
                                             <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-certificate"></i></span></div><input class="form-control" type="text" name="birthCertNumber" required="" placeholder="Certificate number ." minlength="3"
+                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-certificate"></i></span></div><input class="form-control" type="text" name="birthCertNumber" value = "<?php if(isset($birthCertNumber)){echo $lName;}?>"required="" placeholder="Certificate number ." minlength="3"
                                                     autocomplete="on" inputmode="numeric" id="birthCertNumber"></div><span id="BirthCertificateNoError" style="color:red;"></span></div>
                                     </div>
                                 </div>
@@ -138,13 +267,13 @@ include('registration.php');
                                     <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                                         <div class="form-group"><label for="from-phone">NHIF number</label><span class="required-input">*</span>
                                             <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-id-card"></i></span></div><input class="form-control" type="text" name="nhifNumber" required="" placeholder="NHIF Number" maxlength="3" autocomplete="on"
+                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-id-card"></i></span></div><input class="form-control" type="text" name="nhifNumber" value = "<?php if(isset($nhifNumber)){echo $nhifNumber;}?>"required="" placeholder="NHIF Number" maxlength="3" autocomplete="on"
                                                     inputmode="numeric" id="nhifNumber"></div><span id="NHIFNoError"></span></div>
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                                         <div class="form-group"><label for="from-phone">KRA Number .</label><span class="required-input">*</span>
                                             <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-id-card-o"></i></span></div><input class="form-control" type="text" name="kraNumber" required="" placeholder="KRA Number" autocomplete="on" inputmode="numeric"
+                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-id-card-o"></i></span></div><input class="form-control" type="text" name="kraNumber" value = "<?php if(isset($kraNumber)){echo $kraNumber;}?>"required="" placeholder="KRA Number" autocomplete="on" inputmode="numeric"
                                                     id="kraNumber"></div><span id="KRANoError"></span></div>
                                     </div>
                                 </div>
@@ -154,7 +283,7 @@ include('registration.php');
                             <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                                 <div class="form-group"><label for="from-phone">Email </label><span class="required-input">*</span>
                                     <div class="input-group">
-                                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-envelope-o" style="background-color:#ffffff;"></i></span></div><input class="form-control" type="text" name="email" required="" placeholder="Email Address"
+                                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-envelope-o" style="background-color:#ffffff;"></i></span></div><input class="form-control" type="text" name="email" value = "<?php if(isset($email)){echo $email;}?>"required="" placeholder="Email Address"
                                             inputmode="email" id="email"></div><span id="EmailError"></span></div>
                             </div>
                             <div class="col-12 col-sm-6 col-md-6 col-lg-6">
@@ -168,7 +297,7 @@ include('registration.php');
                             <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                                 <div class="form-group"><label for="from-phone">Phone</label><span class="required-input">*</span>
                                     <div class="input-group">
-                                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-phone"></i></span></div><input class="form-control" type="text" name="phone" required="" placeholder="Primary Phone" inputmode="tel" id="phone"></div><span id="phoneError"></span></div>
+                                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-phone"></i></span></div><input class="form-control" type="text" name="phone" value = "<?php if(isset($phone)){echo $phone;}?>" required="" placeholder="Primary Phone" inputmode="tel" id="phone"></div><span id="phoneError"></span></div>
                             </div>
                             <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                                 <div class="form-group"><label for="from-calltime">Best Time to Call</label>
@@ -180,7 +309,7 @@ include('registration.php');
                         <div class="form-group">
                             <div class="form-row">
                                 <div class="col"><button class="btn btn-warning btn-block" type="reset"><i class="fa fa-undo"></i> Reset</button></div>
-                                <div class="col"><button class="btn btn-success btn-block" type="submit" id = "submit"><strong>NEXT&nbsp;</strong><i class="fa fa-forward" style="background-color:rgba(0,0,0,0);color:rgb(255,255,255);"></i></button></div>
+                                <div class="col"><button class="btn btn-success btn-block submit" type="submit" id = "submit"><strong>NEXT&nbsp;</strong><i class="fa fa-forward" style="background-color:rgba(0,0,0,0);color:rgb(255,255,255);"></i></button></div>
                             </div>
                         </div>
                         <hr class="d-flex d-md-none">
@@ -313,7 +442,7 @@ include('registration.php');
     <script src="assets/js/bs-animation.js"></script>
     <script src="assets/js/jquery-3.3.1.js"></script>
     <script src="assets/js/Sidebar-Menu.js"></script>    
-	<script src = "sighnupValidation.js"></script>
+	 <script src = "sighnupValidation.js"></script> 
 </body>
 
 </html>
