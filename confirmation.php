@@ -1,3 +1,49 @@
+ <?php
+	session_start();
+	$errors2 = null;
+	include('phpFiles/databaseConnection.php');
+	if($_SERVER['REQUEST_METHOD']== "POST"){
+		      	$fname = 				 $_SESSION["fName"];    
+                $lName =            	 $_SESSION["lName"];	
+                $surName =          	 $_SESSION["surName"];     
+                $date =             	 $_SESSION["date"];	
+                $birthCertNumber =   	 $_SESSION["birthCertNumber"];
+                $nhifNumber  =       	 $_SESSION["nhifNumber"];	
+                $kraNumber  =       	 $_SESSION["kraNumber"];	
+                $email =              	 $_SESSION["email"];	
+                $phone =            	 $_SESSION["phone"];	
+                $callTime  =        	 $_SESSION["callTime"];	
+                $residence =        	 $_SESSION["residence"];
+				$errors2 = array();
+				if(!(isset($_POST['checkConfirm']))){
+					array_push($errors2 , "Please check confirmation Box To register.");
+				}
+				else{
+				
+			 if($conn){
+		  $sql = "insert into patient_details(Fname,Lname,SurName,phone_number,email,Residence,birthCertificateNumber,kraNumber,NhifNumber,callTime,Date_Of_Birth) values('".$fname. "','".$lName."','".$surName."','".$phone."','".$email."','".$residence."','".$birthCertNumber."','".$kraNumber."','".$nhifNumber."','".$callTime."','".$date ."');";
+	      $valid = mysqli_query($conn,$sql);
+		  if($valid){
+			  $sql2 = "insert into patient_verification (username,password,patient_id) values ('".$email."','".$nhifNumber."','". 1 ."');";
+			  $valid2 = mysqli_query($conn,$sql2);
+			  if($valid2){
+				  
+				   header('Location:login.html'); 
+			  }
+			 else{
+				echo mysqli_error($conn);
+			 }
+		  }
+		  else{
+			  mysqli_error($conn);
+		  }
+	  }
+	  else{
+		  die("The database connection was not successful.");
+	  }
+	}
+	}
+	?>
 <!DOCTYPE html>
 <html>
 
@@ -83,19 +129,29 @@
     <div style="background-color:#d3e4f8;">
         <div class="container" style="background-color:#d3e4f8; font-family:&quot;Times New Roman&quot;">
             <h1 style="font-family:times new roman;text-align:center;">Please Confirm Your Details .</h1>
+			<?php
+			      	        if(!empty($errors2)){
+				foreach($errors2 as $key){
+					echo "<div class=\"alert alert-danger\">
+  <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
+  <strong>Warning!</strong>".$key."
+</div>";
+				}
+			}
+			?>
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <h2>Names: &nbsp; &nbsp; &nbsp;<span style="font-size:26px;">Names Goes Here .</span></h2>
-                    <h3>Birth Certificate Number: &nbsp; &nbsp; &nbsp;<span style="font-size:26px;">Names Goes Here .</span></h3>
-                    <h2>NHIF Number: &nbsp; &nbsp; &nbsp;<span style="font-size:26px;">Names Goes Here .</span></h2>
-                    <h2>Residence: &nbsp; &nbsp; &nbsp;<span style="font-size:26px;">Names Goes Here .</span></h2>
-                    <h2>Phone Number: &nbsp; &nbsp; &nbsp;<span style="font-size:26px;">Names Goes Here .</span></h2>
-                    <h2>Date Of Birth: &nbsp; &nbsp; &nbsp;<span style="font-size:26px;">Names Goes Here .</span></h2>
-                    <h2>KRA Number: &nbsp; &nbsp; &nbsp;<span style="font-size:26px;">Names Goes Here .</span></h2>
-                    <h2>Email Address: &nbsp; &nbsp; &nbsp;<span style="font-size:26px;">Names Goes Here .</span></h2>
-                    <form action="sighnup.php" method="post">
+                    <h2>Names: &nbsp; &nbsp; &nbsp;<span style="font-size:26px; color:red;"><?php echo $_SESSION["fName"]. " ".$_SESSION["lName"]." ".$_SESSION["surName"]."." ;?></span></h2>
+                    <h3>Birth Certificate Number: &nbsp; &nbsp; &nbsp;<span style="font-size:26px; color:red;"><?php echo $_SESSION["birthCertNumber"];?></span></h3>
+                    <h2>NHIF Number: &nbsp; &nbsp; &nbsp;<span style="font-size:26px; color:red;"><?php echo $_SESSION["nhifNumber"];?></span></h2>
+                    <h2>Residence: &nbsp; &nbsp; &nbsp;<span style="font-size:26px; color:red;"><?php echo $_SESSION["residence"];?></span></h2>
+                    <h2>Phone Number: &nbsp; &nbsp; &nbsp;<span style="font-size:26px; color:red;"><?php echo $_SESSION["phone"];?></span></h2>
+                    <h2>Date Of Birth: &nbsp; &nbsp; &nbsp;<span style="font-size:26px;color:red;"><?php echo $_SESSION["date"];?></span></h2>
+                    <h2>KRA Number: &nbsp; &nbsp; &nbsp;<span style="font-size:26px;color:red;"><?php echo $_SESSION["kraNumber"];?></span></h2>
+                    <h2>Email Address: &nbsp; &nbsp; &nbsp;<span style="font-size:26px;color:red;"><?php echo $_SESSION["email"];?></span></h2>
+                    <form action="confirmation.php" method="post">
                         <div class="form-group">
-                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Check To Confirm That The Data Above are Your Personal Details To Continue .</label></div>
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1" name = "checkConfirm"><label class="form-check-label" for="formCheck-1">Check To Confirm That The Data Above are Your Personal Details To Continue .</label></div>
                         </div>
                         <div class="form-group">
                             <div class="form-row" style="margin-top: 20px; margin-bottom: 20px;">

@@ -1,4 +1,5 @@
     <?php
+	session_start();
 	include('phpFiles/databaseConnection.php');
 	if($_SERVER['REQUEST_METHOD']== "POST"){
 				   $errors = null;
@@ -95,27 +96,19 @@
     }
 	
 	if(count($errors) == 0){
-		 if($conn){
-		  $sql = "insert into patient_details(Fname,Lname,SurName,phone_number,email,Residence,birthCertificateNumber,kraNumber,NhifNumber,callTime,Date_Of_Birth) values('".$fname. "','".$lName."','".$surName."','".$phone."','".$email."','".$residence."','".$birthCertNumber."','".$kraNumber."','".$nhifNumber."','".$callTime."','".$date ."');";
-	      $valid = mysqli_query($conn,$sql);
-		  if($valid){
-			  $sql2 = "insert into patient_verification (username,password,patient_id) values ('".$email."','".$nhifNumber."','". 1 ."');";
-			  $valid2 = mysqli_query($conn,$sql2);
-			  if($valid2){
-				  
-				   header('Location:login.html'); 
-			  }
-			 else{
-				echo mysqli_error($conn);
-			 }
-		  }
-		  else{
-			  mysqli_error($conn);
-		  }
-	  }
-	  else{
-		  die("The database connection was not successful.");
-	  }
+	$_SESSION["fName"] = $fname;
+	$_SESSION["lName"] = $lName;
+	$_SESSION["surName"] = $surName;
+	$_SESSION["date"] = $date;
+	$_SESSION["birthCertNumber"] = $birthCertNumber;
+	$_SESSION["nhifNumber"] = $nhifNumber;
+	$_SESSION["kraNumber"] = $kraNumber;
+	$_SESSION["email"]= $email;
+	$_SESSION["phone"] = $phone;
+	$_SESSION["callTime"] = $callTime;
+	$_SESSION["residence"] = $residence;
+	
+	header('Location:confirmation.php');
 	}
 	}
 	
