@@ -1,6 +1,4 @@
-    <?php
-	session_start();
-	include('phpFiles/databaseConnection.php');
+    <?php session_start();
 	if($_SERVER['REQUEST_METHOD']== "POST"){
 				   $errors = null;
 	   
@@ -252,7 +250,7 @@
                                     <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                                         <div class="form-group"><label for="from-phone">Birth Certificate Number.</label><span class="required-input">*</span>
                                             <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-certificate"></i></span></div><input class="form-control" type="text" name="birthCertNumber" value = "<?php if(isset($birthCertNumber)){echo $lName;}?>"required="" placeholder="Certificate number ." minlength="3"
+                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-certificate"></i></span></div><input class="form-control" type="text" name="birthCertNumber" value = "<?php if(isset($birthCertNumber)){echo $birthCertNumber;}?>"required="" placeholder="Certificate number ." minlength="3"
                                                     autocomplete="on" inputmode="numeric" id="birthCertNumber"></div><span id="BirthCertificateNoError" style="color:red;"></span></div>
                                     </div>
                                 </div>

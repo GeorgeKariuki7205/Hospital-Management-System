@@ -63,25 +63,8 @@
 <title>Hospitals Management .</title>
 </head>
 
-<body style="background-image:url(&quot;assets/img/pexels-photo-433267.jpeg&quot;);">
-    <div>
-        <form id="form" style="font-family:Quicksand, sans-serif;background-color:rgba(34,30,42,0.65);width:320px;padding:40px;" action="verification.php" method="post">
-            <h2 id="head" style="color:rgb(88,222,55);font-family:Times New Roman;"><strong>PATIENT LOGIN&nbsp;</strong></h2>
-            <div style="text-align:center;"><img class="rounded-circle img-fluid" src="assets/img/download (1).png" id="image" style="width:auto;height:auto;"></div>
-            <div class="form-group"><label for="from-phone" style="font-family:Times New Roman;"><strong>User Name :</strong></label><span class="required-input">*</span>
-                <div class="input-group">
-                    <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user"></i></span></div><input class="form-control" type="text" name="fName" required="" placeholder="User Name ." id="fName"></div>
-            </div>
-            <div class="form-group"><label for="from-phone" style="font-family:Times New Roman;"><strong>First name</strong></label><span class="required-input">*</span>
-                <div class="input-group">
-                    <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-key"></i></span></div><input class="form-control" type="text" name="password" required="" placeholder="Password" id="fName"></div>
-            </div>
-            <div class="form-group"></div><button class="btn btn-success" type="submit" id="butonas" style="width:100%;height:100%;margin-bottom:10px;background-color:rgb(18,217,14);font-family:Times New Roman;"><strong>LOG IN&nbsp; &nbsp; &nbsp;&nbsp;</strong><i class="fa fa-unlock" style="font-size:32px;"></i></button>
-            <a
-                href="#" id="linkas" style="font-size:12px;margin:auto;margin-left:0;margin-right:0;margin-bottom:0;margin-top:0;padding-left:0;padding-right:0;color:rgb(177,151,70);">Forgot your e mail or password?</a>
-        </form>
-    </div>
-    <div>
+<body>
+    <div style="margin-bottom: 85px;">
         <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-info navigation-clean-button" style="background-color:rgb(10,57,222);">
             <div class="container"><a class="navbar-brand" href="index.html" id="brandInSmall" style="font-family:Times New Roman;"><i class="fa fa-stethoscope" style="font-size:42px;color:rgb(226,22,22);"></i>&nbsp; &nbsp; Hospital System.</a><button class="navbar-toggler"
                     data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
@@ -99,7 +82,35 @@
             </div>
         </nav>
     </div>
-    <footer class="footer" style="background-color:#1aa0be;">
+    <div style="background-color:#d3e4f8;">
+        <div class="container" style="background-color:#d3e4f8; font-family:&quot;Times New Roman&quot;">
+            <h1 style="font-family:times new roman;text-align:center;">Please Confirm Your Details .</h1>
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <h2>Names: &nbsp; &nbsp; &nbsp;<span style="font-size:26px;">Names Goes Here .</span></h2>
+                    <h3>Birth Certificate Number: &nbsp; &nbsp; &nbsp;<span style="font-size:26px;">Names Goes Here .</span></h3>
+                    <h2>NHIF Number: &nbsp; &nbsp; &nbsp;<span style="font-size:26px;">Names Goes Here .</span></h2>
+                    <h2>Residence: &nbsp; &nbsp; &nbsp;<span style="font-size:26px;">Names Goes Here .</span></h2>
+                    <h2>Phone Number: &nbsp; &nbsp; &nbsp;<span style="font-size:26px;">Names Goes Here .</span></h2>
+                    <h2>Date Of Birth: &nbsp; &nbsp; &nbsp;<span style="font-size:26px;">Names Goes Here .</span></h2>
+                    <h2>KRA Number: &nbsp; &nbsp; &nbsp;<span style="font-size:26px;">Names Goes Here .</span></h2>
+                    <h2>Email Address: &nbsp; &nbsp; &nbsp;<span style="font-size:26px;">Names Goes Here .</span></h2>
+                    <form action="sighnup.php" method="post">
+                        <div class="form-group">
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Check To Confirm That The Data Above are Your Personal Details To Continue .</label></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row" style="margin-top: 20px; margin-bottom: 20px;">
+                                <div class="col"><a class="btn btn-danger btn-block" role="button" href="sighnup.html"><i class="fa fa-backward"></i><strong>&nbsp; EDIT DETAILS</strong></a></div>
+                                <div class="col"><button class="btn btn-success btn-block" type="submit" id="verify"><strong>NEXT&nbsp;</strong><i class="fa fa-forward" style="background-color:rgba(0,0,0,0);color:rgb(255,255,255);"></i></button></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer" style="background-color:#1aa0be;margin-top:0px;">
         <div class="row">
             <div class="col-sm-6 col-md-4 footer-navigation">
                 <h3><a href="#">Hospital Management .</a></h3>
