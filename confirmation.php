@@ -1,4 +1,4 @@
- <?php
+<?php
 	session_start();
 	$errors2 = null;
 	include('phpFiles/databaseConnection.php');
@@ -24,15 +24,7 @@
 		  $sql = "insert into patient_details(Fname,Lname,SurName,phone_number,email,Residence,birthCertificateNumber,kraNumber,NhifNumber,callTime,Date_Of_Birth) values('".$fname. "','".$lName."','".$surName."','".$phone."','".$email."','".$residence."','".$birthCertNumber."','".$kraNumber."','".$nhifNumber."','".$callTime."','".$date ."');";
 	      $valid = mysqli_query($conn,$sql);
 		  if($valid){
-			  $sql2 = "insert into patient_verification (username,password,patient_id) values ('".$email."','".$nhifNumber."','". 1 ."');";
-			  $valid2 = mysqli_query($conn,$sql2);
-			  if($valid2){
-				  
-				   header('Location:login.html'); 
-			  }
-			 else{
-				echo mysqli_error($conn);
-			 }
+			  header('Location:setPassword.html'); 
 		  }
 		  else{
 			  mysqli_error($conn);
