@@ -1,3 +1,30 @@
+<?php
+$token = $_GET['token'];
+$email = $_GET['email'];
+$msg = null;
+$count = null;
+include('phpFiles/databaseConnection.php');
+if($conn){
+	$sql = "SELECT patient_id from patient_details where token = '".$token."' AND email ='".$email."';";
+	$valid = mysqli_query($conn,$sql);
+	if($valid){
+		$count = mysqli_num_rows($valid);
+		if($count ==1){
+			$msg ="YOU HAVE SUCCESSFULLY ACTIVATED YOUR ACCOUNT.";
+		}
+		else{
+		$msg = "SOMETHING WENT TERRIBLY WRONG.";
+	}
+	}
+	else{
+		echo mysqli_error($conn);
+	}
+}
+else{
+	die("THE DATABASE CONNECTION WAS NOT SUCCESSFUL.");
+	
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -63,8 +90,8 @@
 <title>Hospitals Management .</title>
 </head>
 
-<body>
-    <div>
+<body style="background-color:#d3e4f8;background-position:center;background-size:cover;background-repeat:no-repeat;">
+    <div style="margin-bottom:20px;">
         <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-info navigation-clean-button" style="background-color:rgb(10,57,222);">
             <div class="container"><a class="navbar-brand" href="index.html" id="brandInSmall" style="font-family:Times New Roman;"><i class="fa fa-stethoscope" style="font-size:42px;color:rgb(226,22,22);"></i>&nbsp; &nbsp; Hospital System.</a><button class="navbar-toggler"
                     data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
@@ -82,16 +109,20 @@
             </div>
         </nav>
     </div>
-    <div class="darkHeader">
-        <div class="header-dark">
-            <div class="container hero">
-                <div class="row">
-                    <div class="col-md-8 offset-md-2">
-                        <h1 class="text-center"><span style="text-decoration: underline;">Efficient Doctor-Patient Portal .</span></h1>
-                        <h4 style="color:#ffffff;font-family:'Gentium Basic', serif; text-align : center;">Providing Efficient Services to all In The Health Sector.</h4><img class="img-fluid" src="assets/img/pexels-photo-263210.jpeg"></div>
-                </div>
-            </div>
-        </div>
+	<?php
+	      echo $msg;
+	?>
+    <h1 style="font-family:times new roman;text-align:center; margin-top:90px;"><span style="text-decoration: underline;">Please Set Your Password .</span></h1>
+	  
+    <div id="setPassword" class="login-card" style="background-color:rgba(3,141,171,0.64);"><img src="assets/img/avatar_2x.png" class="profile-img-card">
+        <p id="displayError">&nbsp; &nbsp;&nbsp;</p>
+        <form action="phpFiles/setPassword.php" method="post" class="form-signin">
+            <p style="color:rgb(0,0,0);">Password<span id="passwordError" style="font-size:13px;color:rgb(20,0,252);">&nbsp;Minimum 8 Characters.&nbsp;</span></p><input class="form-control" type="text" required="" placeholder="password" id="password"><label>Re-Ener Password .</label>
+            <span
+                id="Re-EnterPasswordError"></span><input class="form-control" type="password" name="password" required="" placeholder="Re-Enter Password" id="re-enterPassword">
+                <div class="checkbox">
+                    <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"></div>
+                </div><button class="btn btn-danger btn-block btn-lg btn-signin" type="submit" style="background-color:rgb(248,33,33);">Set Password</button></form>
     </div>
     <footer class="footer" style="background-color:#1aa0be;">
         <div class="row">

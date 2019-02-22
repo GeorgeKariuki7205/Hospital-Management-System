@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	$errors2 = null;
+	$token = null;
 	include('phpFiles/databaseConnection.php');
 	if($_SERVER['REQUEST_METHOD']== "POST"){
 		      	$fname = 				 $_SESSION["fName"];    
@@ -15,6 +16,19 @@
                 $callTime  =        	 $_SESSION["callTime"];	
                 $residence =        	 $_SESSION["residence"];
 				$errors2 = array();
+				
+				$token = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFHJKLZXCVBNM0123456789!@$%^&*/-+";
+				$token = str_shuffle($token);
+				$token = substr($token);
+				
+				//MAILING DETAILS :
+				
+				$to = $email;
+				$subject = "PLEASE CONFIRM YOUR ACCOUNT SO AS TO LOG IN.";
+				$headers = "MIME-Version: 1.0" . "\r\n";
+                $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+				$msg = " <html> <a href = \"georekariuki.tk/login.php?email=".$email."&token=".$token."\"></html>";
+				
 				if(!(isset($_POST['checkConfirm']))){
 					array_push($errors2 , "Please check confirmation Box To register.");
 				}
@@ -24,7 +38,8 @@
 		  $sql = "insert into patient_details(Fname,Lname,SurName,phone_number,email,Residence,birthCertificateNumber,kraNumber,NhifNumber,callTime,Date_Of_Birth) values('".$fname. "','".$lName."','".$surName."','".$phone."','".$email."','".$residence."','".$birthCertNumber."','".$kraNumber."','".$nhifNumber."','".$callTime."','".$date ."');";
 	      $valid = mysqli_query($conn,$sql);
 		  if($valid){
-			  header('Location:setPassword.html'); 
+			  mail($to,$subject,$msg,$headers);
+			  header('Location:emailConfirmation.php'); 
 		  }
 		  else{
 			  mysqli_error($conn);

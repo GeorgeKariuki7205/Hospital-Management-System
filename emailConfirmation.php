@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -64,34 +69,40 @@
 </head>
 
 <body>
-    <div>
-        <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-info navigation-clean-button" style="background-color:rgb(10,57,222);">
-            <div class="container"><a class="navbar-brand" href="index.html" id="brandInSmall" style="font-family:Times New Roman;"><i class="fa fa-stethoscope" style="font-size:42px;color:rgb(226,22,22);"></i>&nbsp; &nbsp; Hospital System.</a><button class="navbar-toggler"
-                    data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navcol-1">
-                    <ul class="nav navbar-nav mr-auto">
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="index.html" style="color:rgb(11,12,12);font-size:20px;font-family:Times New Roman;"><strong>Home .</strong></a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="about.html" style="color:rgb(0,0,0);font-size:20px;font-family:Times New Roman;"><strong>About </strong>.</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="contacts.html" style="color:rgb(1,1,1);font-size:20px;font-family:Times New Roman;"><strong>Contacts.</strong></a></li>
-                        <li class="dropdown"><a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" style="color:rgb(0,0,0);font-size:20px;font-family:Times New Roman;"><strong>Locations</strong></a>
-                            <div class="dropdown-menu"
-                                role="menu"><a class="dropdown-item" role="presentation" href="locations.html"><strong>Nairobi</strong></a><a class="dropdown-item" role="presentation" href="locations.html"><strong>Mombasa</strong></a><a class="dropdown-item" role="presentation"
-                                    href="locations.html"><strong>Kisumu</strong></a></div>
-                        </li>
-                    </ul><span class="navbar-text actions"> <a href="login.html" class="login" style="color:rgba(55,60,184,0.9);font-family:Times New Roman;"><strong>Patient Log In</strong></a><a class="btn btn-info action-button" role="button" href="sighnup.php" data-bs-hover-animate="bounce">Sign Up</a></span></div>
+    <div class="carousel slide" data-ride="carousel" id="carousel-1">
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+                <div class="jumbotron hero-nature carousel-hero" style="text-align:center;background-image:url(&quot;assets/img/pexels-photo-48604.jpeg&quot;);background-position:center;background-repeat:no-repeat;">
+                    <h1 class="hero-title"><br><strong><?php echo $_SESSION["fName"]. " ".$_SESSION["lName"]." ".$_SESSION["surName"]."." ;?></strong><br></h1>
+                    <p class="hero-subtitle" style="text-align:center;color:rgb(0,0,0);"><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Confirmation Email Has Been Sent To The Address : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong><em><?php echo $_SESSION["email"];?>&nbsp;</em></strong><br><strong>Please Confirm The Account Before You Proceed.</strong><br><br>&nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br><br></p>
+                    <p><a class="btn btn-danger btn-lg hero-button" role="button" href="login.html">Log In.</a></p>
+                </div>
             </div>
-        </nav>
-    </div>
-    <div class="darkHeader">
-        <div class="header-dark">
-            <div class="container hero">
-                <div class="row">
-                    <div class="col-md-8 offset-md-2">
-                        <h1 class="text-center"><span style="text-decoration: underline;">Efficient Doctor-Patient Portal .</span></h1>
-                        <h4 style="color:#ffffff;font-family:'Gentium Basic', serif; text-align : center;">Providing Efficient Services to all In The Health Sector.</h4><img class="img-fluid" src="assets/img/pexels-photo-263210.jpeg"></div>
+            <div class="carousel-item">
+                <div class="jumbotron hero-photography carousel-hero" style="background-image:url(&quot;assets/img/pexels-photo-415825.jpeg&quot;);background-position:center;background-repeat:no-repeat;">
+                    <h1 class="hero-title"><br><strong><?php echo $_SESSION["fName"]. " ".$_SESSION["lName"]." ".$_SESSION["surName"]."." ;?></strong><br></h1>
+                    <p class="hero-subtitle" style="text-align:center;color:rgb(0,0,0);"><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Confirmation Email Has Been Sent To The Address : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong><em><?php echo $_SESSION["email"];?>&nbsp;</em></strong><br><strong>Please Confirm The Account Before You Proceed.</strong><br><br>&nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br><br></p>
+                    <p><a class="btn btn-danger btn-lg hero-button" role="button" href="login.html">Log In.</a></p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="jumbotron hero-technology carousel-hero" style="background-image:url(&quot;assets/img/headache-pain-pills-medication-159211.jpeg&quot;);">
+                    <h1 class="hero-title"><br><strong><?php echo $_SESSION["fName"]. " ".$_SESSION["lName"]." ".$_SESSION["surName"]."." ;?></strong><br></h1>
+                    <p class="hero-subtitle" style="text-align:center;color:rgb(0,0,0);"><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Confirmation Email Has Been Sent To The Address : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong><em><?php echo $_SESSION["email"];?>&nbsp;</em></strong><br><strong>Please Confirm The Account Before You Proceed.</strong><br><br>&nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br><br></p>
+                    <p><a class="btn btn-danger btn-lg hero-button" role="button" href="login.html">Log In.</a></p>
                 </div>
             </div>
         </div>
+        <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev"><i class="fa fa-chevron-left"></i><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-slide="next"><i class="fa fa-chevron-right"></i><span class="sr-only">Next</span></a></div>
+        <ol
+            class="carousel-indicators">
+            <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-1" data-slide-to="1"></li>
+            <li data-target="#carousel-1" data-slide-to="2"></li>
+            </ol>
     </div>
     <footer class="footer" style="background-color:#1aa0be;">
         <div class="row">
