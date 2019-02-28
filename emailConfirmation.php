@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +75,9 @@ session_start();
                     <h1 class="hero-title"><br><strong><?php echo $_SESSION["fName"]. " ".$_SESSION["lName"]." ".$_SESSION["surName"]."." ;?></strong><br></h1>
                     <p class="hero-subtitle" style="text-align:center;color:rgb(0,0,0);"><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Confirmation Email Has Been Sent To The Address : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong><em><?php echo $_SESSION["email"];?>&nbsp;</em></strong><br><strong>Please Confirm The Account Before You Proceed.</strong><br><br>&nbsp;
                         &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br><br></p>
-                    <p><a class="btn btn-danger btn-lg hero-button" role="button" href="login.html">Log In.</a></p>
+                    <form action = "emailConfirmation.php" method = "post">
+                    <input type = "submit " class = "btn btn-danger btn-lg" value = "RESEND CONFIRMATION EMAIL."/>
+					</form>
                 </div>
             </div>
             <div class="carousel-item">
@@ -84,7 +85,9 @@ session_start();
                     <h1 class="hero-title"><br><strong><?php echo $_SESSION["fName"]. " ".$_SESSION["lName"]." ".$_SESSION["surName"]."." ;?></strong><br></h1>
                     <p class="hero-subtitle" style="text-align:center;color:rgb(0,0,0);"><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Confirmation Email Has Been Sent To The Address : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong><em><?php echo $_SESSION["email"];?>&nbsp;</em></strong><br><strong>Please Confirm The Account Before You Proceed.</strong><br><br>&nbsp;
                         &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br><br></p>
-                    <p><a class="btn btn-danger btn-lg hero-button" role="button" href="login.html">Log In.</a></p>
+						<form action = "emailConfirmation.php" method = "post">
+                    <input type = "submit " class = "btn btn-danger btn-lg" value = "RESEND CONFIRMATION EMAIL."/>
+					</form>
                 </div>
             </div>
             <div class="carousel-item">
@@ -92,7 +95,9 @@ session_start();
                     <h1 class="hero-title"><br><strong><?php echo $_SESSION["fName"]. " ".$_SESSION["lName"]." ".$_SESSION["surName"]."." ;?></strong><br></h1>
                     <p class="hero-subtitle" style="text-align:center;color:rgb(0,0,0);"><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Confirmation Email Has Been Sent To The Address : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong><em><?php echo $_SESSION["email"];?>&nbsp;</em></strong><br><strong>Please Confirm The Account Before You Proceed.</strong><br><br>&nbsp;
                         &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br><br></p>
-                    <p><a class="btn btn-danger btn-lg hero-button" role="button" href="login.html">Log In.</a></p>
+                    <form action = "emailConfirmation.php" method = "post">
+                    <input type = "submit " class = "btn btn-danger btn-lg" value = "RESEND CONFIRMATION EMAIL."/>
+					</form>
                 </div>
             </div>
         </div>

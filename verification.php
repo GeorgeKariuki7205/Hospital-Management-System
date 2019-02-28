@@ -6,7 +6,10 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     $password = $_POST['password'];
     echo $email;
     echo $password;
-     $conn = mysqli_connect('localhost:3308','root','7205','monaowano');
+	
+	// Checking if the user has activated his account.. 
+	
+	$sql1 = "SELECT isEmailVerified from patient details where email = $"
 	 
    $sql = "SELECT pv_id from patient_verification where username = '".$email."' and password = '".$password."'";
    echo $sql;
