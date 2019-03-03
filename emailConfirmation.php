@@ -1,7 +1,36 @@
 <?php
 session_start();
-?>
+include('phpFiles/databaseConnection.php');
+ if($_SERVER['REQUEST_METHOD'] == "POST"){
+	 
+	 $resendvalue = null;
+	 
+	 // sql statement = 
+	 $token = str_shuffle('QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1230456789');
+	 $token = substr($token, 0,10);
+	 
+	 
+	 
+	 $sql = "update patient_details set token = '". $token."' where email = '".$_SESSION['email'] ."'and isEmailConfirmed = '" . 0 . "';";
+	 $valid = mysqli_query($conn,$sql);
+	        if($valid){
+				// mail to function......
+				$to = $_SESSION['email'];
+				$subject = "RESEND CONFIRMATION.";
+				$headers = "MIME-Version: 1.0" . "\r\n";
+                $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+				$msg = "https://projecthospitalmanagement.000webhostapp.com/setPasswordUI.php?email=".$email."&token=".$token."";
+				$resendvalue = "The confirmation email has been resend ";
+				
+				
+				 mail($to,$subject,$msg,$headers);
+			}
+			else{
+				echo "There was an error experienced while updating the token......" . mysqli_error($conn);
+			}
+ }
 
+?>
 <!DOCTYPE html>
 <html>
 
@@ -27,12 +56,20 @@ session_start();
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tenali+Ramakrishna">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Timmana">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web">
+    <link rel="stylesheet" href="assets/css/DashBoard-light-boostrap1.css">
+    <link rel="stylesheet" href="assets/css/DashBoard-light-boostrap2.css">
+    <link rel="stylesheet" href="assets/css/DashBoard-light-boostrap4.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="assets/css/DashBoard-light-boostrap3.css">
     <link rel="stylesheet" href="assets/css/Analog_Clock.css">
     <link rel="stylesheet" href="assets/css/Basic-fancyBox-Gallery.css">
     <link rel="stylesheet" href="assets/css/Carousel-Hero.css">
     <link rel="stylesheet" href="assets/css/Contact-Form-v2-Modal--Full-with-Google-Map.css">
     <link rel="stylesheet" href="assets/css/Customizable-Background--Overlay.css">
+    <link rel="stylesheet" href="assets/css/Dashboard-layout-v11.css">
+    <link rel="stylesheet" href="assets/css/Dashboard-layout-v111.css">
+    <link rel="stylesheet" href="assets/css/Dashboard-layout-v112.css">
+    <link rel="stylesheet" href="assets/css/DashBoard-light-boostrap.css">
     <link rel="stylesheet" href="assets/css/Footer-Basic.css">
     <link rel="stylesheet" href="assets/css/Footer-Dark.css">
     <link rel="stylesheet" href="assets/css/Header-Dark-1.css">
@@ -40,14 +77,14 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
     <link rel="stylesheet" href="assets/css/Lightbox-Gallery.css">
+    <link rel="stylesheet" href="assets/css/Google-Style-Login.css">
+    <link rel="stylesheet" href="assets/css/Pretty-Footer.css">
+    <link rel="stylesheet" href="assets/css/Pretty-Footer-2.css">
+    <link rel="stylesheet" href="assets/css/Pretty-Footer-1.css">
     <link rel="stylesheet" href="assets/css/Navbar-Fixed-Side.css">
     <link rel="stylesheet" href="assets/css/Navigation-with-Button.css">
     <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
     <link rel="stylesheet" href="assets/css/OcOrato---Login-form.css">
-    <link rel="stylesheet" href="assets/css/Google-Style-Login.css">
-    <link rel="stylesheet" href="assets/css/Pretty-Footer.css">
-    <link rel="stylesheet" href="assets/css/Pretty-Footer-1.css">
-    <link rel="stylesheet" href="assets/css/Pretty-Footer-2.css">
     <link rel="stylesheet" href="assets/css/OcOrato---Login-form1.css">
     <link rel="stylesheet" href="assets/css/Sidebar-Menu-1.css">
     <link rel="stylesheet" href="assets/css/Sidebar-Menu.css">
@@ -68,46 +105,22 @@ session_start();
 </head>
 
 <body>
-    <div class="carousel slide" data-ride="carousel" id="carousel-1">
-        <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active">
-                <div class="jumbotron hero-nature carousel-hero" style="text-align:center;background-image:url(&quot;assets/img/pexels-photo-48604.jpeg&quot;);background-position:center;background-repeat:no-repeat;">
-                    <h1 class="hero-title"><br><strong><?php echo $_SESSION["fName"]. " ".$_SESSION["lName"]." ".$_SESSION["surName"]."." ;?></strong><br></h1>
-                    <p class="hero-subtitle" style="text-align:center;color:rgb(0,0,0);"><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Confirmation Email Has Been Sent To The Address : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong><em><?php echo $_SESSION["email"];?>&nbsp;</em></strong><br><strong>Please Confirm The Account Before You Proceed.</strong><br><br>&nbsp;
-                        &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br><br></p>
-                    <form action = "emailConfirmation.php" method = "post">
-                    <input type = "submit " class = "btn btn-danger btn-lg" value = "RESEND CONFIRMATION EMAIL."/>
-					</form>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="jumbotron hero-photography carousel-hero" style="background-image:url(&quot;assets/img/pexels-photo-415825.jpeg&quot;);background-position:center;background-repeat:no-repeat;">
-                    <h1 class="hero-title"><br><strong><?php echo $_SESSION["fName"]. " ".$_SESSION["lName"]." ".$_SESSION["surName"]."." ;?></strong><br></h1>
-                    <p class="hero-subtitle" style="text-align:center;color:rgb(0,0,0);"><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Confirmation Email Has Been Sent To The Address : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong><em><?php echo $_SESSION["email"];?>&nbsp;</em></strong><br><strong>Please Confirm The Account Before You Proceed.</strong><br><br>&nbsp;
-                        &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br><br></p>
-						<form action = "emailConfirmation.php" method = "post">
-                    <input type = "submit " class = "btn btn-danger btn-lg" value = "RESEND CONFIRMATION EMAIL."/>
-					</form>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="jumbotron hero-technology carousel-hero" style="background-image:url(&quot;assets/img/headache-pain-pills-medication-159211.jpeg&quot;);">
-                    <h1 class="hero-title"><br><strong><?php echo $_SESSION["fName"]. " ".$_SESSION["lName"]." ".$_SESSION["surName"]."." ;?></strong><br></h1>
-                    <p class="hero-subtitle" style="text-align:center;color:rgb(0,0,0);"><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Confirmation Email Has Been Sent To The Address : &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong><em><?php echo $_SESSION["email"];?>&nbsp;</em></strong><br><strong>Please Confirm The Account Before You Proceed.</strong><br><br>&nbsp;
-                        &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br><br></p>
-                    <form action = "emailConfirmation.php" method = "post">
-                    <input type = "submit " class = "btn btn-danger btn-lg" value = "RESEND CONFIRMATION EMAIL."/>
-					</form>
+    <div style="background-image:url(&quot;assets/img/pexels-photo-48604.jpeg&quot;);height:500px;background-position:center;background-size:cover;background-repeat:no-repeat;">
+        <div class="d-flex justify-content-center align-items-center" style="height:inherit;min-height:initial;width:100%;position:absolute;left:0;background-color:rgba(30,41,99,0.53);">
+            <div class="d-flex align-items-center order-12" style="height:200px;">
+                <div class="container" style="text-align:center">
+                    <h1 class="text-center" style="color:rgb(242,245,248);font-size:56px;font-weight:bold;font-family:Roboto, sans-serif;"><?php echo $_SESSION["fName"]. " ".$_SESSION["lName"]." ".$_SESSION["surName"]."." ;?></h1>
+					                    					<?php 
+                       if(isset($resendvalue)){
+                           echo $resendvalue;
+                       }
+                    ?>
+                    <h3 class="text-center" style="color:rgb(242,245,248);padding-top:0.25em;padding-bottom:0.25em;font-weight:normal;"><br>Confirmation Email Has Been Sent To The Address : &nbsp;<br><?php echo $_SESSION["email"];?></h3>
+                    <h3 class="text-center" style="color:rgb(242,245,248);padding-top:0.25em;padding-bottom:0.25em;font-weight:normal;"><br>Please Confirm The Account Before You Proceed.<br></h3>
+                    <form action="emailConfirmation.php" method="post"><button class="btn btn-danger btn-lg" type="submit">Resend Email Confirmation .</button></form>
                 </div>
             </div>
         </div>
-        <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev"><i class="fa fa-chevron-left"></i><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-slide="next"><i class="fa fa-chevron-right"></i><span class="sr-only">Next</span></a></div>
-        <ol
-            class="carousel-indicators">
-            <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel-1" data-slide-to="1"></li>
-            <li data-target="#carousel-1" data-slide-to="2"></li>
-            </ol>
     </div>
     <footer class="footer" style="background-color:#1aa0be;">
         <div class="row">
@@ -147,9 +160,14 @@ session_start();
     <script src="assets/js/Analog_Clock.js"></script>
     <script src="assets/js/Contact-Form-v2-Modal--Full-with-Google-Map.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
+    <script src="assets/js/DashBoard-light-boostrap1.js"></script>
     <script src="assets/js/jquery.validate.js"></script>
+    <script src="assets/js/Dashboard-layout-v11.js"></script>
     <script src="assets/js/jquery.validate.min.js"></script>
+    <script src="assets/js/DashBoard-light-boostrap.js"></script>
     <script src="assets/js/new.js"></script>
+    <script src="assets/js/DashBoard-light-boostrap3.js"></script>
+    <script src="assets/js/DashBoard-light-boostrap2.js"></script>
     <script src="assets/js/Sortable-filter-gallery-portfolio.js"></script>
     <script src="assets/js/bs-animation.js"></script>
     <script src="assets/js/jquery-3.3.1.js"></script>

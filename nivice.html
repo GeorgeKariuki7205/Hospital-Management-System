@@ -37,17 +37,18 @@
     <link rel="stylesheet" href="assets/css/Dashboard-layout-v111.css">
     <link rel="stylesheet" href="assets/css/Dashboard-layout-v112.css">
     <link rel="stylesheet" href="assets/css/DashBoard-light-boostrap.css">
+    <link rel="stylesheet" href="assets/css/Drag--Drop-Upload-Form.css">
     <link rel="stylesheet" href="assets/css/Footer-Basic.css">
     <link rel="stylesheet" href="assets/css/Footer-Dark.css">
     <link rel="stylesheet" href="assets/css/Header-Dark-1.css">
     <link rel="stylesheet" href="assets/css/Header-Dark.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
-    <link rel="stylesheet" href="assets/css/Lightbox-Gallery.css">
     <link rel="stylesheet" href="assets/css/Google-Style-Login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
     <link rel="stylesheet" href="assets/css/Pretty-Footer.css">
     <link rel="stylesheet" href="assets/css/Pretty-Footer-2.css">
     <link rel="stylesheet" href="assets/css/Pretty-Footer-1.css">
+    <link rel="stylesheet" href="assets/css/Lightbox-Gallery.css">
     <link rel="stylesheet" href="assets/css/Navbar-Fixed-Side.css">
     <link rel="stylesheet" href="assets/css/Navigation-with-Button.css">
     <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
@@ -71,7 +72,168 @@
 <title>Hospitals Management .</title>
 </head>
 
-<body>
+<body style="background-color:#d3e4f8;">
+    <nav class="navbar navbar-dark navbar-expand-md sticky-top" style="padding:0px 0px;margin-bottom:10px;background-color:#1aa0be;">
+        <div class="container-fluid"><a class="navbar-brand" href="#"><i class="fa fa-gear" style="font-size:45px;"></i></a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#" style="background-color:#1aa0be;padding-left:16px;"><strong>Maseno CU Dashboard.</strong></a></li>
+                </ul>
+                <ul class="nav navbar-nav ml-auto" style="background-color:#1aa0be;">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#" style="background-color:#1aa0be;"><i class="fa fa-user" style="font-size:25px;"></i>&nbsp; &nbsp;Welcome George &nbsp;to admin Panel......</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#"><i class="fa fa-sign-out" style="font-size:25px;"></i>&nbsp; &nbsp; Log Out.</a></li>
+                </ul>
+        </div>
+        </div>
+    </nav>
+    <div class="container">
+        <ol class="breadcrumb" style="background-color:#f1655c;margin-top:10px;">
+            <li class="breadcrumb-item"><a href="assets/img/headache-pain-pills-medication-159211.jpeg"><span>Home</span></a></li>
+            <li class="breadcrumb-item"><a href="assets/img/building.jpg"><span>Admin</span></a></li>
+            <li class="breadcrumb-item"><a href="assets/img/desk.jpg"><span>Panel</span></a></li>
+        </ol>
+        <div class="row">
+            <div class="col">
+                <h2 style="margin-top:0px;font-family:'Gentium Book Basic', serif;">Manage The Site From Here.</h2>
+            </div>
+            <div class="col"> <div class="dropdown" style = "float:right;">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropd
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <li><a href="#">HTML</a></li>
+    <li><a href="#">CSS</a></li>
+    <li><a href="#">JavaScript</a></li>
+  </ul>
+</div></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card" style="background-color:#b7e5eb;">
+                    <div class="card-header" style="background-color:rgba(181,24,109,0.59);">
+                        <h5 class="mb-0">Heading</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group"><a class="list-group-item list-group-item-action list-group-item-info active"><span>List Group Item 1</span></a><a class="list-group-item list-group-item-action" href="index.html"><span>List Group Item 2</span></a><a class="list-group-item list-group-item-action"
+                                href="login.html"><span>List Group Item 3</span></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div>
+                    <div class="card">
+                        <div class="card-header" style="background-color:rgba(181,24,109,0.59);">
+                            <h5 class="mb-0">Heading</h5>
+                        </div>
+                        <div class="card-body" style="background-color:#b7e5eb;">
+                            <div class="row">
+                                <div class="col"><a href = "index.html">
+                                    <div class="card" data-bs-hover-animate="jello" style="background:linear-gradient(90deg, #11998e 0%, #38ef7d 100%);">
+                                        <div class="card-body" style="color:rgb(254,255,255);">
+                                            <p style="color:rgb(249,249,249);"><i class="fa fa-user" style="font-size:50px;"></i>&nbsp; &nbsp; &nbsp; <strong>230</strong></p>
+                                            <p style="color:rgb(255,252,252);"><strong>Names&nbsp;</strong></p>
+                                        </div>
+                                    </div></a></div>
+                                <div class="col">
+                                    <div class="card" style="background:linear-gradient( #45b649 0%, #dce35b 100%);color:rgb(255,255,255);">
+                                        <div class="card-body" style="color:rgb(255,255,255);">
+                                            <p style="color:rgb(255,255,255);"><i class="fa fa-camera" style="font-size:50px;"></i>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<strong>230</strong></p>
+                                            <p style="color:rgb(255,255,255);"><strong>Names&nbsp;</strong></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card" style="background:linear-gradient(#3f5efb 0%, #fc466b 100%);">
+                                        <div class="card-body">
+                                            <p style="color:rgb(255,255,255);"><i class="fa fa-trash-o" style="font-size:50px;"></i>&nbsp; &nbsp; &nbsp; <strong>230</strong></p>
+                                            <p style="color:rgb(255,255,255);"><strong>Names&nbsp;</strong></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover table-dark table-sm">
+                <caption>This table is all &nbsp;about the doctors appointments.</caption>
+                <thead>
+                    <tr>
+                        <th>First Name .</th>
+                        <th style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;">Second Name.</th>
+                        <th style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;">Action perfomd.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cell 1</td>
+                        <td style="padding-top:0px;padding-right:0px;padding-bottom:0px;">Cell 1</td>
+                        <td><a class="btn btn-success" role="button" href="index,html" style="background-color:#87cb16;color:#ffffff; border-radius:50%;" title="tooltip is on." data-toggle="tooltip"><i class="fa fa-eye" style="font-size:20px;color:rgb(0,0,0);"></i></a>
+                            <a
+                                class="btn btn-success" role="button" href="index,html" style="background-color:#87cb16;color:#ffffff;border-radius:50%;margin-right:10px;margin-left:10px;" title="tooltip is on." data-toggle="tooltip"><i class="fa fa-plane" style="font-size:20px;color:rgb(0,0,0);"></i></a><a class="btn btn-success" role="button" href="index,html" style="background-color:#87cb16;color:#ffffff; border-radius:50%;" title="tooltip is on." data-toggle="tooltip"><i class="fa fa-leaf" style="font-size:20px;color:rgb(0,0,0);"></i></a></td>
+                    </tr>
+                    <tr>
+                        <td>Cell 1</td>
+                        <td>Cell 1</td>
+                        <td><button class="btn btn-success" type="button" style="background-color:#87cb16;color:#ffffff; border-radius:50%;"><i class="fa fa-eye" style="font-size:20px;color:rgb(0,0,0);"></i></button><a class="btn btn-success" role="button"
+                                href="index,html" style="background-color:#87cb16;color:#ffffff;border-radius:50%;margin-right:10px;margin-left:10px;" title="tooltip is on." data-toggle="tooltip"><i class="fa fa-plane" style="font-size:20px;color:rgb(0,0,0);"></i></a>
+                            <a
+                                class="btn btn-success" role="button" href="index,html" style="background-color:#87cb16;color:#ffffff;border-radius:50%;margin-right:10px;margin-left:0px;" title="tooltip is on." data-toggle="tooltip"><i class="fa fa-leaf" style="font-size:20px;color:rgb(0,0,0);"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cell 3</td>
+                        <td>Cell 3</td>
+                        <td><button class="btn btn-success" type="button" style="background-color:#87cb16;color:#ffffff; border-radius:50%;"><i class="fa fa-eye" style="font-size:20px;color:rgb(0,0,0);"></i></button><a class="btn btn-success" role="button"
+                                href="index,html" style="background-color:#87cb16;color:#ffffff;border-radius:50%;margin-right:10px;margin-left:10px;" title="tooltip is on." data-toggle="tooltip"><i class="fa fa-plane" style="font-size:20px;color:rgb(0,0,0);"></i></a>
+                            <a
+                                class="btn btn-success" role="button" href="index,html" style="background-color:#87cb16;color:#ffffff;border-radius:50%;margin-right:10px;margin-left:0px;" title="tooltip is on." data-toggle="tooltip"><i class="fa fa-leaf" style="font-size:20px;color:rgb(0,0,0);"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>Summary 1</td>
+                        <td>Summary 2</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <footer class="footer" style="background-color:#1aa0be;">
+        <div class="row">
+            <div class="col-sm-6 col-md-4 footer-navigation">
+                <h3><a href="#">Hospital Management .</a></h3>
+                <p class="links"><a href="#">Home</a><strong> · </strong><a href="#">Feedback.</a><strong> · </strong><a href="#">Locations</a><strong> · </strong><a href="#">About</a><strong> · </strong><a href="#">Faq</a><strong> · </strong><a href="#">Contact</a></p>
+                <p
+                    class="company-name" style="color:rgb(255,255,255);">Hospital Management System. © 2019</p>
+            </div>
+            <div class="col-sm-6 col-md-4 footer-contacts">
+                <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
+                    <p><span class="new-line-span">Consolidated Biulding 23 Floor</span> Upper Hill , Nairobi , Kenya.</p>
+                </div>
+                <div><i class="fa fa-phone footer-contacts-icon"></i>
+                    <p class="footer-center-info email text-left"> +254792107437</p>
+                </div>
+                <div><i class="fa fa-envelope footer-contacts-icon"></i>
+                    <p> <a href="#" target="_blank" style="color:rgb(3,97,252);">management@management.t</a></p>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-4 footer-about ourDedics">
+                <h4>Site Created and Maintained By :&nbsp;</h4>
+                <h5><strong>JohKariMo Developers</strong></h5>
+                <p style="color:rgb(255,255,255);"> A software comapny dedicated to meet All Your Software needs. Contact us or visit us for more to do with development of Web Applications , Android Apps , &nbsp;Home Automatio etc .</p>
+                <div class="social-links social-icons"><a href="facebook.com"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-github"></i></a></div>
+            </div>
+        </div>
+    </footer>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
