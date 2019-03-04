@@ -9,6 +9,7 @@
     <title>Hospital</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono">
@@ -38,6 +39,7 @@
     <link rel="stylesheet" href="assets/css/Dashboard-layout-v112.css">
     <link rel="stylesheet" href="assets/css/DashBoard-light-boostrap.css">
     <link rel="stylesheet" href="assets/css/Drag--Drop-Upload-Form.css">
+    <link rel="stylesheet" href="assets/css/Dropdown-Login-with-Social-Logins.css">
     <link rel="stylesheet" href="assets/css/Footer-Basic.css">
     <link rel="stylesheet" href="assets/css/Footer-Dark.css">
     <link rel="stylesheet" href="assets/css/Header-Dark-1.css">
@@ -82,10 +84,13 @@
                         <li class="nav-item" role="presentation"><a class="nav-link" href="index.html" style="color:rgb(11,12,12);font-size:20px;font-family:Times New Roman;"><strong>Home .</strong></a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link" href="about.html" style="color:rgb(0,0,0);font-size:20px;font-family:Times New Roman;"><strong>About </strong>.</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link" href="contacts.html" style="color:rgb(1,1,1);font-size:20px;font-family:Times New Roman;"><strong>Contacts.</strong></a></li>
-                        <li class="dropdown"><a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" style="color:rgb(0,0,0);font-size:20px;font-family:Times New Roman;"><strong>Locations</strong></a>
-                            <div class="dropdown-menu"
+                        <li class="dropdown show"><a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="true" href="#" style="color:rgb(0,0,0);font-size:20px;font-family:Times New Roman;"><strong>Locations</strong></a>
+                            <div class="dropdown-menu show"
                                 role="menu"><a class="dropdown-item" role="presentation" href="locations.html"><strong>Nairobi</strong></a><a class="dropdown-item" role="presentation" href="locations.html"><strong>Mombasa</strong></a><a class="dropdown-item" role="presentation"
-                                    href="locations.html"><strong>Kisumu</strong></a></div>
+                                    href="locations.html"><strong>Kisumu</strong></a><a class="dropdown-item" role="presentation" href="#">Menu Item</a><a class="dropdown-item" role="presentation" href="#">Menu Item</a>
+                                <h6 class="dropdown-header" role="presentation">Header</h6>
+                                <div class="dropdown-divider" role="presentation"></div>
+                            </div>
                         </li>
                     </ul><span class="navbar-text actions"> <a href="login.html" class="login" style="color:rgba(55,60,184,0.9);font-family:Times New Roman;"><strong>Patient Log In</strong></a><a class="btn btn-info action-button" role="button" href="sighnup.php" data-bs-hover-animate="tada">Sign Up</a></span></div>
             </div>
@@ -165,13 +170,14 @@
             <h1 class="patnersHeaders" style="text-align : center;">In Association With :</h1>
             <div class="row flex-box flex-wrap-wrap">
                 <div class="col-sm-4 flex-box flex-justify-center flex-align-center"><a href="assets/img/i.png" class="fancybox" rel="gallery1" title="Kenyan Gouvernment."><img class="img-fluid" src="assets/img/i.png" alt="Kenyan Gouvernment." data-bs-hover-animate="flash" title="Kenyan Gouvernment."></a></div>
-                <div class="col-sm-4 flex-box flex-justify-center flex-align-center"><a href="assets/img/ix.png" class="fancybox" rel="gallery1" title="UNCEF"><img class="img-fluid" src="assets/img/ix.png" data-bs-hover-animate="flash" title="UNICEF"></a></div>
-                <div class="col-sm-4 flex-box flex-justify-center flex-align-center"><a href="assets/img/inax.png" class="fancybox" rel="gallery1" title="Aghakhan University Hospital."><img class="img-fluid" src="assets/img/inax.png" data-bs-hover-animate="flash" title="Aghakhan University Hospital."></a></div>
-                <div class="col-sm-4 flex-box flex-justify-center flex-align-center"><a href="assets/img/knx.jpg" class="fancybox" rel="gallery1" title="Kenyatta National Hospital ."><img class="img-fluid" src="assets/img/knx.jpg" data-bs-hover-animate="flash" title="Kenyatta National Hospital ."></a></div>
-                <div class="col-sm-4 flex-box flex-justify-center flex-align-center"><a href="assets/img/index.png" class="fancybox" rel="gallery1" title="USAID"><img class="img-fluid" src="assets/img/index.png" data-bs-hover-animate="flash" title="USAID"></a></div>
-                <div class="col-sm-4 flex-box flex-justify-center flex-align-center"><a href="assets/img/uk.png" class="fancybox" rel="gallery1" title="UKAID"><img class="img-fluid" src="assets/img/uk.png" data-bs-hover-animate="flash" title="UKAID"></a></div>
-            </div>
+                <div
+                    class="col-sm-4 flex-box flex-justify-center flex-align-center"><a href="assets/img/ix.png" class="fancybox" rel="gallery1" title="UNCEF"><img class="img-fluid" src="assets/img/ix.png" data-bs-hover-animate="flash" title="UNICEF"></a></div>
+            <div class="col-sm-4 flex-box flex-justify-center flex-align-center"><a href="assets/img/inax.png" class="fancybox" rel="gallery1" title="Aghakhan University Hospital."><img class="img-fluid" src="assets/img/inax.png" data-bs-hover-animate="flash" title="Aghakhan University Hospital."></a></div>
+            <div class="col-sm-4 flex-box flex-justify-center flex-align-center"><a href="assets/img/knx.jpg" class="fancybox" rel="gallery1" title="Kenyatta National Hospital ."><img class="img-fluid" src="assets/img/knx.jpg" data-bs-hover-animate="flash" title="Kenyatta National Hospital ."></a></div>
+            <div class="col-sm-4 flex-box flex-justify-center flex-align-center"><a href="assets/img/index.png" class="fancybox" rel="gallery1" title="USAID"><img class="img-fluid" src="assets/img/index.png" data-bs-hover-animate="flash" title="USAID"></a></div>
+            <div class="col-sm-4 flex-box flex-justify-center flex-align-center"><a href="assets/img/uk.png" class="fancybox" rel="gallery1" title="UKAID"><img class="img-fluid" src="assets/img/uk.png" data-bs-hover-animate="flash" title="UKAID"></a></div>
         </div>
+    </div>
     </div>
     <footer class="footer" style="background-color:#1aa0be;">
         <div class="row">
@@ -203,10 +209,8 @@
     </footer>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery/1.12.4/jquery.min.js"></script>
     <script src="assets/js/Basic-fancyBox-Gallery2.js"></script>
     <script src="assets/js/Analog_Clock.js"></script>
     <script src="assets/js/Contact-Form-v2-Modal--Full-with-Google-Map.js"></script>
@@ -220,11 +224,11 @@
     <script src="assets/js/DashBoard-light-boostrap3.js"></script>
     <script src="assets/js/DashBoard-light-boostrap2.js"></script>
     <script src="assets/js/Sortable-filter-gallery-portfolio.js"></script>
-    <script src="assets/js/bs-animation.js"></script>
-    <script src="assets/js/jquery-3.3.1.js"></script>
+    <script src="assets/js/modal.js"></script>
     <script src="assets/js/passwordValidation.js"></script>
     <script src="assets/js/Sidebar-Menu.js"></script>
     <script src="assets/js/validation.js"></script>
+    <script src="assets/js/bs-animation.js"></script>
 </body>
 
 </html>

@@ -1,4 +1,5 @@
 <?php
+include('phpFiles/databaseConnection.php');
 if($_SERVER['REQUEST_METHOD']=="POST"){
     // echo "Submitted.";
     // echo "THE DATA HAS BEEN SUCCESSFULLY SUPPLIED.";
@@ -9,7 +10,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 	
 	// Checking if the user has activated his account.. 
 	
-	$sql1 = "SELECT isEmailVerified from patient details where email = $"
+	$sql1 = "SELECT isEmailVerified from patient details where email = $";
 	 
    $sql = "SELECT pv_id from patient_verification where username = '".$email."' and password = '".$password."'";
    echo $sql;
