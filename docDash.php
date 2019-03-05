@@ -1,3 +1,8 @@
+<?PHP
+
+     include('phpFiles/databaseConnection.php');
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -231,7 +236,7 @@
             <div class="col-lg-9">
                 <div>
                     <div class="card">
-                        <div class="card-header" style="background-color:#b5186d;">
+                        <div class="card-header" style="background-color:rgba(181,24,109,0.59);">
                             <h5 class="mb-0">Major Operations ....</h5>
                         </div>
                         <div class="card-body" style="background-color:#b7e5eb;">
@@ -277,56 +282,53 @@
                         <caption>This table is all &nbsp;about the doctors appointments.</caption>
                         <thead>
                             <tr>
-                                <th class="th" style="color:rgb(255,255,255);">Doctor Name</th>
-                                <th style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;color:rgb(255,255,255);">Patient Name</th>
+                                <th class="th" style="color:rgb(255,255,255);">Doctor Name.</th>
+                                <th style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;color:rgb(255,255,255);">Patient Name.</th>
                                 <th class="th" style="color:rgb(255,253,253);">Time&nbsp;</th>
                                 <th class="th" style="color:rgb(254,254,254);">Patient Id&nbsp;</th>
-                                <th style="color:rgb(255,246,246);">Appointmant Date</th>
-                                <th style="color:rgb(255,246,246);">Appointmant Date</th>
+                                <th style="color:rgb(255,246,246);">Appointment Date.</th>
+                                <th style="text-align:center;color:rgb(255,252,252);">ACTIONS.</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>George Kariuki</td>
-                                <td style="padding-top:0px;padding-right:0px;padding-bottom:0px;">Prestige Loamni</td>
-                                <td>12:00 pm</td>
-                                <td>PT/00145/016</td>
-                                <td>12-01-2014</td>
-                                <td><a class="btn btn-success" role="button" href="index,html" style="background-color:#87cb16;color:#ffffff; border-radius:50%;" title="view patient." data-toggle="tooltip"><i class="fa fa-eye" style="font-size:20px;color:rgb(0,0,0);"></i></a>
+						
+						    <?php
+							
+							       $sql = " select concat(doctor_details.Fname,'  ', doctor_details.Lname) as doctor_names, concat(patient_details.Fname, ' ',patient_details.Lname) as Patient_Name, appointments_booked.time_slot, appointments_booked.appointmant_date from  appointments_booked inner join doctor_details on appointments_booked.doc_id =  doctor_details.doc_id  inner join patient_details on  appointments_booked.patient_id =  patient_details.patient_id ;";
+							        $valid = mysqli_query($conn,$sql);
+									if($valid){
+										echo "valid";
+										while($rows = mysqli_fetch_assoc($valid)){
+											$docName = $rows['doctor_names'];
+											$patNmae = $rows['Patient_Name'];
+											$time_slot = $rows['time_slot'];
+											$appointmant_date = $rows['appointmant_date'];
+											echo "<tr>
+                                <td>$docName</td>
+                                <td style=\"padding-top:0px;padding-right:0px;padding-bottom:0px;\">$patNmae</td>
+                                <td>$time_slot</td>
+								<td>Nairobi Hoapital</td>
+                                <td>$appointmant_date</td>                                
+                                <td><a class=\"btn btn-success\" role=\"button\" href=\"index.html\" style=\"background-color:#87cb16;color:#ffffff; border-radius:50%;\" title=\"view patient.\" data-toggle=\"tooltip\"><i class=\"fa fa-eye\" style=\"font-size:20px;color:rgb(0,0,0);\"></i></a>
                                     <a
-                                        class="btn btn-secondary" role="button" href="index,html" style="background-color:#34e8e8;color:#ffffff;border-radius:50%;margin-right:10px;margin-left:10px;" title="delete appointment" data-toggle="tooltip"><i class="fa fa-trash-o" style="font-size:20px;color:rgb(0,0,0);"></i></a><a class="btn btn-success" role="button" href="index,html" style="background-color:#e8449d;color:#ffffff;border-radius:50%;" title="search ."
-                                            data-toggle="tooltip"><i class="fa fa-search" style="font-size:20px;color:rgb(0,0,0);"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td>George Kariuki<br></td>
-                                <td>Prestige Loamni<br></td>
-                                <td>12:00 pm<br></td>
-                                <td>PT/00145/016<br></td>
-                                <td>12-01-2014<br></td>
-                                <td><button class="btn btn-success" type="button" style="background-color:#87cb16;color:#ffffff; border-radius:50%;" title="View History." data-toggle="tooltip"><i class="fa fa-eye" style="font-size:20px;color:rgb(0,0,0);"></i></button>
-                                    <a
-                                        class="btn btn-success" role="button" href="index,html" style="background-color:#34e8e8;color:#ffffff;border-radius:50%;margin-right:10px;margin-left:10px;" title="delete appointment" data-toggle="tooltip"><i class="fa fa-trash" style="font-size:20px;color:rgb(0,0,0);"></i></a><a class="btn btn-success" role="button" href="index,html" style="background-color:#e8449d;color:#ffffff;border-radius:50%;margin-right:10px;margin-left:0px;"
-                                            title="search ." data-toggle="tooltip"><i class="fa fa-search" style="font-size:20px;color:rgb(0,0,0);"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td>George Kariuki<br></td>
-                                <td>Prestige Loamni<br></td>
-                                <td>12:00 pm<br></td>
-                                <td>PT/00145/016<br></td>
-                                <td>12-01-2014<br></td>
-                                <td><button class="btn btn-success" type="button" style="background-color:#87cb16;color:#ffffff; border-radius:50%;" title="View History." data-toggle="tooltip"><i class="fa fa-eye" style="font-size:20px;color:rgb(0,0,0);"></i></button>
-                                    <a
-                                        class="btn btn-success" role="button" href="index,html" style="background-color:#34e8e8;color:#ffffff;border-radius:50%;margin-right:10px;margin-left:10px;" title="delete appointment" data-toggle="tooltip"><i class="fa fa-trash" style="font-size:20px;color:rgb(0,0,0);"></i></a><a class="btn btn-success" role="button" href="index,html" style="background-color:#e8449d;color:#ffffff;border-radius:50%;margin-right:10px;margin-left:0px;"
-                                            title="search ." data-toggle="tooltip"><i class="fa fa-search" style="font-size:20px;color:rgb(0,0,0);"></i></a></td>
-                            </tr>
+                                        class=\"btn btn-secondary\" role=\"button\" href=\"index.tml\" style=\"background-color:#34e8e8;color:#ffffff;border-radius:50%;margin-right:10px;margin-left:10px;\" title=\"delete appointment\" data-toggle=\"tooltip\"><i class=\"fa fa-trash-o\" style=\"font-size:20px;color:rgb(0,0,0);\"></i></a><a class=\"btn btn-success\" role=\"button\" href=\"index,html\" style=\"background-color:#e8449d;color:#ffffff;border-radius:50%;\" title=\"search .\"
+                                            data-toggle=\"tooltip\"><i class=\"fa fa-search\" style=\"font-size:20px;color:rgb(0,0,0);\"></i></a></td>
+                            </tr>";
+										}
+									}
+									else{
+										echo "invlaid";																				
+									}
+							?>
+                            
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td><em>FIRST NAME .</em><br></td>
-                                <td><em>SECOND NAME.</em><br></td>
-                                <td><em>TIME</em>&nbsp;<br></td>
-                                <td><em>PATIENT ID&nbsp;</em><br></td>
-                                <td>Appoinment date</td>
+                                <td><em>Doctor Name</em><br></td>
+                                <td><em>Patient Name.</em><br></td>
+                                <td><em>Time&nbsp;</em>&nbsp;<br></td>
+                                <td><em>Patient Id&nbsp;&nbsp;</em><br></td>
+                                <td>Appointment Date</td>
                                 <td><em>ACTIONS .</em><br></td>
                             </tr>
                         </tfoot>
@@ -335,29 +337,29 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" role="dialog" tabindex="-1" id="modal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Patient Search .</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
-                <div class="modal-body">
-                    <p>Please Insert The Patient Id Then Search.</p>
-                    <form action="medicalHistory.php" method="post">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user"></i>&nbsp;ID</span></div><input class="form-control" type="text" name="patient_id">
-                                <div class="input-group-append"></div>
-                            </div>
+   <div role="dialog" tabindex="-1" class="modal fade" id="modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Patient Search .</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+            <div class="modal-body">
+                <p>Please Insert The Patient Id Then Search.</p>
+                <form action="medicalHistory.php" method="post">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user"></i>ID</span></div><input type="text" name="patient_id" class="form-control" />
+                            <div class="input-group-append"></div>
                         </div>
-                        <div class="form-row">
-                            <div class="col-sm-6 offset-sm-3"><button class="btn btn-primary btn-block" type="submit" style="background-color:rgb(52,114,247);color:rgb(252,252,252);"><strong>Search</strong></button></div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer"><button class="btn btn-success" type="button" data-dismiss="modal" style="background-color:#1aa0be;color:rgb(255,255,255);">Close</button></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-sm-6 offset-sm-3"><button class="btn btn-primary btn-block" type="submit" style="background-color:rgb(52,114,247);color:rgb(252,252,252);"><strong>Search</strong></button></div>
+                    </div>
+                </form>
             </div>
+            <div class="modal-footer"><button class="btn btn-success" type="button" data-dismiss="modal" style="background-color:#1aa0be;color:rgb(255,255,255);">Close</button></div>
         </div>
     </div>
+</div>
     <div class="modal fade" role="dialog" tabindex="-1" id="ceomodal">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">

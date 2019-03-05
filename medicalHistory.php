@@ -1,3 +1,15 @@
+<?php
+      include('phpFiles/databaseConnection.php');
+      if($_SERVER['REQUEST_METHOD'] == "POST"){
+		  
+		  $patient_id = $_POST['patient_id'];
+		  
+		  echo $patient_id;
+		  
+		   echo "php loaded.";							 						
+	  }
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -88,76 +100,153 @@
         </nav>
     </div>
     <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2 style="margin-top:0px;font-family:'Gentium Book Basic', serif;">Doctor Dashboard.</h2>
+            </div>
+        </div>
         <ol class="breadcrumb" style="background-color:#f1655c;">
             <li class="breadcrumb-item"><a href="index.html"><span>Home</span></a></li>
             <li class="breadcrumb-item"><a href="login.html"><span>Log In</span></a></li>
-            <li class="breadcrumb-item"><a href="nivice.html"><span>Doctor Panel</span></a></li>
-            <li class="breadcrumb-item"><a href="comments.html"><span>Message Board</span></a></li>
+            <li class="breadcrumb-item"><a href="docDash.php"><span>Doctor Panel</span></a></li>
+            <li class="breadcrumb-item"><a href="medicalHistory.html"><span>Patient Details &amp; Medical History</span></a></li>
         </ol>
-        <h2 class="text-center" style="font-family:&quot;Times New Roman&quot;;">Message Board.</h2>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="card" style="background-color:#b7e5eb;">
-                    <div class="card-header" style="background-color:rgba(181,24,109,0.59);">
-                        <h5 class="mb-0">Navigation&nbsp;</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="list-group"><a class="list-group-item list-group-item-action list-group-item-info active"><span><strong>Home</strong></span></a><a class="list-group-item list-group-item-action" href="index.html"><span><strong>Post Avaliability.</strong></span></a>
-                            <a
-                                class="list-group-item list-group-item-action" href="login.html"><span><strong>Message CEO.</strong></span></a><a class="list-group-item list-group-item-action" href="login.html"><span><strong>Organ Donation.</strong></span></a><a class="list-group-item list-group-item-action" href="login.html"><span><strong>Edit Details.</strong></span></a></div>
-                    </div>
+        <div class="card">
+            <div class="card-header" style="background:linear-gradient(90deg,#b5186d, #b51860);color:rgb(254,254,254);">
+                <h5 class="mb-0">Patient Details.</h5>
+            </div>
+            <div class="card-body" style="background-color:#b7e5eb;">
+                <div class="table-responsive" style="width:600px;margin-left:auto;margin-right:auto;">
+                    <table class="table table-striped table-bordered table-hover table-dark table-sm">
+                        <caption>Patient Details</caption>
+                        <tbody>
+						
+						  <?php						    
+						      $sql = " select concat(Fname,' ',Lname, ' ',SurName) as Names,phone_number,email,birthCertificateNumber,kraNumber,NhifNumber,Date_Of_Birth from patient_details where patient_id = $patient_id;";
+							$valid = mysqli_query($conn,$sql);
+							
+							if($valid){																
+								while ($rows = mysqli_fetch_assoc($valid)){
+									$Names = $rows['Names'];
+									$phone_number = $rows['phone_number'];
+									$birthCertificateNumber = $rows['birthCertificateNumber'];
+									$kraNumber = $rows['kraNumber'];
+									$NhifNumber = $rows['NhifNumber'];
+									$Date_Of_Birth = $rows['Date_Of_Birth'];
+									$email = $rows['email'];
+									
+									echo "
+															
+                            <tr>
+                                <td>Name:</td>
+                                <td>$Names</td>
+                            </tr>
+                            <tr>
+                                <td>DOB:</td>
+                                <td>$Date_Of_Birth</td>
+                            </tr>
+                            <tr>
+                                <td>Phone Number:</td>
+                                <td>$phone_number</td>
+                            </tr>
+                            <tr>
+                                <td>Email Address:</td>
+                                <td>$email</td>
+                            </tr>
+                            <tr>
+                                <td>Birth Certificate Number:</td>
+                                <td>$birthCertificateNumber</td>
+                            </tr>
+                            <tr>
+                                <td>NHIF Number :</td>
+                                <td>$NhifNumber<br></td>
+                            </tr>
+                            <tr>
+                                <td>KRA Number</td>
+                                <td>$kraNumber<br></td>
+                            </tr>
+									";
+									
+									
+								}
+							}
+							else{
+								echo "error".mysqli_error($conn);
+							}
+	  
+						  
+						  ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            <div class="col-lg-9">
-                <div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="card" style="background-color:#f5aeae;">
-                                <div class="card-header" style="background-color:rgba(167,29,29,0.03);background-image:url(&quot;assets/img/hero-background-travel.jpg&quot;);background-position:center;height:100px;">
-                                    <p style="color:rgb(255,254,254);">Administration &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<button class="btn btn-info" type="button" style="border-radius:50%;color:rgb(1,4,11);background-color:#ffffff;"
-                                            title="Create Message." tooltip="tolls"><i class="fa fa-pencil-square-o" style="font-size:25px;"></i></button></p>
-                                </div>
-                                <div class="card-body">
-                                    <div class="media"><img class="rounded-circle img-fluid mr-3" src="assets/img/1.jpg" style="width:110px;">
-                                        <div class="media-body float-none">
-                                            <h5>Media Heading</h5>
-                                            <p class="float-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus nisl ac diam feugiat, non vestibulum libero posuere. Vivamus pharetra leo non nulla egestas, nec malesuada orci finibus. </p><button class="btn btn-primary float-sm-none"
-                                                type="button" style="border-radius:50%;background-color:#00fdc0;"><i class="fa fa-reply"></i></button><button class="btn btn-primary float-sm-none" type="button" style="border-radius:50%;background-color:#00fdc0;"><i class="fa fa-heart"></i></button></div>
-                                    </div>
-                                    <div class="media float-none float-sm-none"><img class="rounded-circle img-fluid mr-3" src="assets/img/1513659884258-1.jpg" style="width:110px;height:110px;">
-                                        <div class="media-body">
-                                            <h5>Media Heading</h5>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus nisl ac diam feugiat, non vestibulum libero posuere. Vivamus pharetra leo non nulla egestas, nec malesuada orci finibus. </p><button class="btn btn-primary float-sm-none"
-                                                type="button" style="border-radius:50%;background-color:#00fdc0;"><i class="fa fa-reply"></i></button><button class="btn btn-primary float-sm-none" type="button" style="border-radius:50%;background-color:#00fdc0;"><i class="fa fa-heart"></i></button></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-header" style="background-color:rgba(252,252,252,0.03);background-position:center;background-size:cover;background-repeat:no-repeat;height:100px;background-image:url(&quot;assets/img/pexels-photo-263210.jpeg&quot;);">
-                                    <p style="color:rgb(255,254,254);">Patients &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<button class="btn btn-info" type="button" style="border-radius:50%;color:rgb(1,4,11);background-color:#ffffff;"
-                                            title="Create Message." tooltip="tolls"><i class="fa fa-pencil-square-o" style="font-size:25px;"></i></button></p>
-                                </div>
-                                <div class="card-body" style="background-color:#adbde8;">
-                                    <div class="media"><img class="rounded-circle img-fluid mr-3" src="assets/img/2.jpg" style="width:110px;">
-                                        <div class="media-body float-none">
-                                            <h5>Media Heading</h5>
-                                            <p class="float-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus nisl ac diam feugiat, non vestibulum libero posuere. Vivamus pharetra leo non nulla egestas, nec malesuada orci finibus. </p><button class="btn btn-primary float-sm-none"
-                                                type="button" style="border-radius:50%;background-color:#00fdc0;"><i class="fa fa-reply"></i></button><button class="btn btn-primary float-sm-none" type="button" style="border-radius:50%;background-color:#00fdc0;"><i class="fa fa-heart"></i></button></div>
-                                    </div>
-                                    <div class="media float-none float-sm-none"><img class="rounded-circle img-fluid mr-3" src="assets/img/1513659884258-1.jpg" style="width:110px;height:110px;">
-                                        <div class="media-body">
-                                            <h5>Media Heading</h5>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus nisl ac diam feugiat, non vestibulum libero posuere. Vivamus pharetra leo non nulla egestas, nec malesuada orci finibus. </p><button class="btn btn-primary float-sm-none"
-                                                type="button" style="border-radius:50%;background-color:#00fdc0;"><i class="fa fa-reply"></i></button><button class="btn btn-primary float-sm-none" type="button" style="border-radius:50%;background-color:#00fdc0;"><i class="fa fa-heart"></i></button></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        </div>
+        <div class="card">
+            <div class="card-header" style="background: linear-gradient(90deg,#b5186d, #b51860);">
+                <h5 class="mb-0" style="color:rgb(247,251,255);">PatientMedical History.</h5>
+            </div>
+            <div class="card-body" style="background-color:#b7e5eb;">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover table-dark table-sm">
+                        <caption>Medical Histry Table.</caption>
+                        <thead>
+                            <tr>
+                                <th>Patient Name</th>
+                                <th>Date</th>
+                                <th>ILLNESS</th>
+                                <th>MEDICATION</th>
+                                <th>SYMPTOMS</th>
+                                <th>MEDICAL CENTER</th>
+                                <th>DOCTOR</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+						
+						    <?php 
+							    $sql = " select concat(doctor_details.Fname,'  ', doctor_details.Lname) as doctor_names, concat(patient_details.Fname, ' ',patient_details.Lname) as Patient_Name,hospital_details.hospital_name as hospital_name , patient_history.test_perfomed, patient_history.medication,patient_history.date_of_illnaess, patient_history.illness, patient_history.symptoms from  patient_history inner join doctor_details on doctor_details.doc_id =  patient_history.doc_id inner join patient_details on patient_details.patient_id =  patient_history. patient_id inner join  hospital_details on  hospital_details.hospital_id = patient_history.hospital_id where  patient_history.patient_id = $patient_id;";
+								$valid2 = mysqli_query($conn,$sql);
+								if($valid2){
+									while($rows = mysqli_fetch_assoc($valid2)){
+										$doctor_names = $rows['doctor_names'];
+										$Patient_Name = $rows['Patient_Name'];
+										$hospital_name = $rows['hospital_name'];
+										$test_perfomed = $rows['test_perfomed'];
+										$medication = $rows['medication'];
+										$date_of_illnaess = $rows['date_of_illnaess'];
+										$illness = $rows['illness'];
+										$symptoms = $rows['symptoms'];
+										
+										
+										echo "
+										
+										    <tr>
+                                    <td>$Patient_Name</td>
+                                    <td>$date_of_illnaess </td>
+									<td>$illness</td>
+									<td>$medication</td>
+									<td>$symptoms</td>
+									<td>$hospital_name</td>
+									<td>$doctor_names</td>
+                            </tr>
+											
+										";
+										
+									}
+								}
+							?>						                                                    
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>PATIENT NAME<br></td>
+                                <td>DATE<br></td>
+                                <td>ILLNESS<br></td>
+                                <td>MEDICATION<br></td>
+                                <td>SYMPTOMS<br></td>
+                                <td>SYMPTOMS<br></td>
+                                <td>DOCTOR<br></td>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
             </div>
         </div>

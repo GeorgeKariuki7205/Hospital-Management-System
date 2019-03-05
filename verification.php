@@ -26,7 +26,24 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 	   header('location: logedin.html');
    }
    else{
-	   echo"LOGIN FAILED.";
+	   
+	   // CHECKS IN THE DOCTOR VERIFICTION IF THE USER IS A DOCTOR.
+	   
+	   $sql2 = "SELECT dv_id from doctor_verification where username = '".$email."' and password = '".$password."'";
+	   $valid = mysqli_query($conn,$sql2);
+	   if(!$valid){
+		  echo  "An Error was encoutered.".mysqli_error($valid);
+	   }
+	   else{
+		   
+		    $count = mysqli_num_rows($valid);
+		   if( $count == 1){
+			   header('location: docDash.php');
+		   }
+		   else{
+			   echo "No user found.";
+		   }
+	   }
    }
 }
 
