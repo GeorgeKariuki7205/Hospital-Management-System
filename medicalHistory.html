@@ -141,6 +141,9 @@
                 </div>
             </div>
         </div>
+        <div class="row" style="margin-bottom:2%;">
+            <div class="col-3 offset-9"><button class="btn btn-primary btn-block btn-lg" type="button" style="color:rgb(255,255,255);background-color:rgb(5,75,224);" data-toggle="modal" data-target="#modal"><i class="fa fa-plus" style="font-size:25px;"></i>&nbsp; &nbsp;ADD DECORD</button></div>
+        </div>
         <div class="card">
             <div class="card-header" style="background: linear-gradient(90deg,#b5186d, #b51860);">
                 <h5 class="mb-0" style="color:rgb(247,251,255);">PatientMedical History.</h5>
@@ -183,6 +186,24 @@
                         </tfoot>
                     </table>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#f4c8c8;">
+                    <h4 class="modal-title">Add Patient Record .</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body" style="background-color:#c6f1ac;">
+                    <form action="medicalHistory.php" method="post">
+                        <div class="form-group"><label>Date :</label><input class="form-control" type="date" name="date" required=""></div>
+                        <div class="form-group"><label>Hospital ID :</label><input class="form-control" type="text" name="hospitalId" required="" placeholder="hospital ID"></div>
+                        <div class="form-group"><label>Symptoms</label><textarea class="form-control" name="symptoms" required="" placeholder="Patient Symptoms."></textarea></div>
+                        <div class="form-group"><label>Tests Perfomed :</label><textarea class="form-control" name="testsPerfomed" required="" placeholder="Tests Perfomed on Patient."></textarea></div>
+                        <div class="form-group"><label>Illness :</label><textarea class="form-control" name="illness" required="" placeholder="Illness of patient."></textarea></div>
+                        <div class="form-group"><label>Medication :</label><textarea class="form-control" name="medication" required="" placeholder="Medication given to patient."></textarea></div><button class="btn btn-danger btn-block btn-lg" type="submit" style="color:rgb(255,255,255);background-color:rgb(255,74,85);">Save Record .</button></form>
+                </div>
+                <div class="modal-footer" style="background-color:#f4c8c8;"><button class="btn btn-warning" type="button" data-dismiss="modal" style="color:rgb(255,255,255);background-color:rgb(255,149,0);">Close</button></div>
             </div>
         </div>
     </div>

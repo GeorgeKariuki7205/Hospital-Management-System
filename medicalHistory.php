@@ -181,6 +181,9 @@
                 </div>
             </div>
         </div>
+		<div class="row" style="margin-bottom:2%;">
+    <div class="col-3 offset-9"><button class="btn btn-primary btn-block btn-lg" type="button" style="color:rgb(255,255,255);background-color:rgb(5,75,224);" data-toggle="modal" data-target="#modal"><i class="fa fa-plus" style="font-size:25px;"></i>ADD DECORD</button></div>
+</div>
         <div class="card">
             <div class="card-header" style="background: linear-gradient(90deg,#b5186d, #b51860);">
                 <h5 class="mb-0" style="color:rgb(247,251,255);">PatientMedical History.</h5>
@@ -206,7 +209,9 @@
 							    $sql = " select concat(doctor_details.Fname,'  ', doctor_details.Lname) as doctor_names, concat(patient_details.Fname, ' ',patient_details.Lname) as Patient_Name,hospital_details.hospital_name as hospital_name , patient_history.test_perfomed, patient_history.medication,patient_history.date_of_illnaess, patient_history.illness, patient_history.symptoms from  patient_history inner join doctor_details on doctor_details.doc_id =  patient_history.doc_id inner join patient_details on patient_details.patient_id =  patient_history. patient_id inner join  hospital_details on  hospital_details.hospital_id = patient_history.hospital_id where  patient_history.patient_id = $patient_id;";
 								$valid2 = mysqli_query($conn,$sql);
 								if($valid2){
+									$sno = 0;
 									while($rows = mysqli_fetch_assoc($valid2)){
+										
 										$doctor_names = $rows['doctor_names'];
 										$Patient_Name = $rows['Patient_Name'];
 										$hospital_name = $rows['hospital_name'];
@@ -215,11 +220,12 @@
 										$date_of_illnaess = $rows['date_of_illnaess'];
 										$illness = $rows['illness'];
 										$symptoms = $rows['symptoms'];
-										
+										$sno = $sno+1;
 										
 										echo "
 										
 										    <tr>
+											<td>$sno</td>
                                     <td>$Patient_Name</td>
                                     <td>$date_of_illnaess </td>
 									<td>$illness</td>
@@ -279,6 +285,24 @@
             </div>
         </div>
     </footer>
+<div role="dialog" tabindex="-1" class="modal fade" id="modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#f4c8c8;">
+                <h4 class="modal-title">Add Patient Record .</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+            <div class="modal-body" style="background-color:#c6f1ac;">
+                <form action="insertRecord.php" method="post">
+                    <div class="form-group"><label>Date :</label><input type="date" name="date" required class="form-control" /></div>
+                    <div class="form-group"><label>Hospital ID :</label><input type="text" name="hospitalId" required placeholder="hospital ID" class="form-control" /></div>
+                    <div class="form-group"><label>Symptoms</label><textarea name="symptoms" placeholder="Patient Symptoms." required class="form-control"></textarea></div>
+                    <div class="form-group"><label>Tests Perfomed :</label><textarea name="testsPerfomed" placeholder="Tests Perfomed on Patient." required class="form-control"></textarea></div>
+                    <div class="form-group"><label>Illness :</label><textarea name="illness" placeholder="Illness of patient." required class="form-control"></textarea></div>
+                    <div class="form-group"><label>Medication :</label><textarea name="medication" placeholder="Medication given to patient." required class="form-control"></textarea></div><button class="btn btn-danger btn-block btn-lg" type="submit" style="color:rgb(255,255,255);background-color:rgb(255,74,85);">Save Record .</button></form>
+            </div>
+            <div class="modal-footer" style="background-color:#f4c8c8;"><button class="btn btn-warning" type="button" data-dismiss="modal" style="color:rgb(255,255,255);background-color:rgb(255,149,0);">Close</button></div>
+        </div>
+    </div>
+</div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
