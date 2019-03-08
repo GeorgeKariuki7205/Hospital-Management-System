@@ -39,7 +39,7 @@
 	      $valid = mysqli_query($conn,$sql);
 		  if($valid){
 			  mail($to,$subject,$msg,$headers);
-			  header('Location:emailConfirmation.php'); 
+			  header('Location:setpassword.html'); 
 		  }
 		  else{
 			  mysqli_error($conn);

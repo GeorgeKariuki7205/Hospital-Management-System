@@ -1,12 +1,14 @@
 <?php
+      session_start();
       include('phpFiles/databaseConnection.php');
       if($_SERVER['REQUEST_METHOD'] == "POST"){
 		  
 		  $patient_id = $_POST['patient_id'];
+
+           $_SESSION['patient_id_set_doctor_search'] = $patient_id;	  
+	  }
+	  else{
 		  
-		  echo $patient_id;
-		  
-		   echo "php loaded.";							 						
 	  }
 
 ?>
@@ -93,7 +95,7 @@
                     data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="#"><strong>Welcome ??Name ?? . Manage Patents eadily</strong></a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="#"><strong>Welcome <?php echo $_SESSION['doc_id'];?> Manage Patents eadily</strong></a></li>
                     </ul><span class="navbar-text actions"> <button class="btn btn-light action-button" type="button" data-toogle="modal" data-target="#modal"><i class="fa fa-sign-out" style="font-size:26px;"></i>Log Out.</button></span>
                 </div>
             </div>
@@ -121,8 +123,9 @@
                         <caption>Patient Details</caption>
                         <tbody>
 						
-						  <?php						    
-						      $sql = " select concat(Fname,' ',Lname, ' ',SurName) as Names,phone_number,email,birthCertificateNumber,kraNumber,NhifNumber,Date_Of_Birth from patient_details where patient_id = $patient_id;";
+						  <?php
+						    
+						      $sql = " select concat(Fname,' ',Lname, ' ',SurName) as Names,phone_number,email,birthCertificateNumber,kraNumber,NhifNumber,Date_Of_Birth from patient_details where patient_id ='".$_SESSION['patient_id_set_doctor_search']."';";
 							$valid = mysqli_query($conn,$sql);
 							
 							if($valid){																
@@ -194,6 +197,7 @@
                         <caption>Medical Histry Table.</caption>
                         <thead>
                             <tr>
+							       <th>Sno</th>
                                 <th>Patient Name</th>
                                 <th>Date</th>
                                 <th>ILLNESS</th>
@@ -206,7 +210,7 @@
                         <tbody>
 						
 						    <?php 
-							    $sql = " select concat(doctor_details.Fname,'  ', doctor_details.Lname) as doctor_names, concat(patient_details.Fname, ' ',patient_details.Lname) as Patient_Name,hospital_details.hospital_name as hospital_name , patient_history.test_perfomed, patient_history.medication,patient_history.date_of_illnaess, patient_history.illness, patient_history.symptoms from  patient_history inner join doctor_details on doctor_details.doc_id =  patient_history.doc_id inner join patient_details on patient_details.patient_id =  patient_history. patient_id inner join  hospital_details on  hospital_details.hospital_id = patient_history.hospital_id where  patient_history.patient_id = $patient_id;";
+							    $sql = " select concat(doctor_details.Fname,'  ', doctor_details.Lname) as doctor_names, concat(patient_details.Fname, ' ',patient_details.Lname) as Patient_Name,hospital_details.hospital_name as hospital_name , patient_history.test_perfomed, patient_history.medication,patient_history.date_of_illnaess, patient_history.illness, patient_history.symptoms from  patient_history inner join doctor_details on doctor_details.doc_id =  patient_history.doc_id inner join patient_details on patient_details.patient_id =  patient_history. patient_id inner join  hospital_details on  hospital_details.hospital_id = patient_history.hospital_id where  patient_history.patient_id ='". $_SESSION['patient_id_set_doctor_search']."';";
 								$valid2 = mysqli_query($conn,$sql);
 								if($valid2){
 									$sno = 0;

@@ -1,4 +1,5 @@
 <?php
+     session_start();
 include('phpFiles/databaseConnection.php');
 if($_SERVER['REQUEST_METHOD']=="POST"){
     // echo "Submitted.";
@@ -21,9 +22,34 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
    $numRows = mysqli_num_rows($valid);
    echo $numRows;
    if($numRows == 1){
-	   echo "LOGIN SUCCESSSFUL.";
-	   
-	   header('location: logedin.html');
+	      // Writing the sql query that will be able to get the id of the patient and set it as a session.
+		  
+		  
+	   while($rows = mysqli_fetch_assoc($valid)){
+		    $pv_id = $rows['pv_id'];
+			
+			
+		    $sql2 = "SELECT patient_id from  patient_verification where pv_id = $pv_id";
+			
+			// Validatin the query written.
+			
+			$valid2 = mysqli_query($conn,$sql2);
+			
+			if($valid2){
+				while( $rows = mysqli_fetch_assoc($valid2)){
+					$patient_id = $rows['patient_id'];
+					$_SESSION['patient_id'] = $patient_id;
+					header('location: logedin.php') ;
+				}
+			}
+			else{
+				echo "The second sql query has a problem".mysqli_error($conn);
+			}
+			
+	   }
+	  /*  header('location: logedin.php') */;
+	  
+	  
    }
    else{
 	   
@@ -38,7 +64,28 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 		   
 		    $count = mysqli_num_rows($valid);
 		   if( $count == 1){
-			   header('location: docDash.php');
+			   	   while($rows = mysqli_fetch_assoc($valid)){
+		                  $dv_id = $rows['dv_id'];
+			
+			
+		                $sql2 = "SELECT doc_id from  doctor_verification where dv_id = $dv_id";
+			
+			// Validatin the query written.
+			
+			           $valid2 = mysqli_query($conn,$sql2);
+			
+			                 if($valid2){
+				                 while( $rows = mysqli_fetch_assoc($valid2)){
+					                 $doc_id = $rows['doc_id'];
+					                 $_SESSION['doc_id'] = $doc_id;
+					                 header('location: docDash.php');
+				                 }
+			                 }
+			                 else{
+				        echo "The second sql query has a problem".mysqli_error($conn);
+			                 }
+			
+	                    }			   
 		   }
 		   else{
 			   echo "No user found.";
