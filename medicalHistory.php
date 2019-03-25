@@ -128,7 +128,19 @@
 						      $sql = " select concat(Fname,' ',Lname, ' ',SurName) as Names,phone_number,email,birthCertificateNumber,kraNumber,NhifNumber,Date_Of_Birth from patient_details where patient_id ='".$_SESSION['patient_id_set_doctor_search']."';";
 							$valid = mysqli_query($conn,$sql);
 							
-							if($valid){																
+							if($valid){
+                                $number = mysqli_num_rows($valid);
+                                    if($number<1){
+										echo "
+										<script src=\"assets/js/jquery.min.js\"></script>
+										<script>
+										          $(function(){
+													  var modal = $(\"#noResult\");
+													  modal.modal(\"show\");
+												  });
+										</script>
+										";
+									}								
 								while ($rows = mysqli_fetch_assoc($valid)){
 									$Names = $rows['Names'];
 									$phone_number = $rows['phone_number'];
@@ -261,6 +273,11 @@
             </div>
         </div>
     </div>
+	<!-- 
+	    THE MODAL ASREA OF THE NO RESULTS FOUND.
+	-->
+	
+	
     <footer class="footer" style="background-color:#1aa0be;">
         <div class="row">
             <div class="col-sm-6 col-md-4 footer-navigation">
@@ -304,6 +321,18 @@
                     <div class="form-group"><label>Medication :</label><textarea name="medication" placeholder="Medication given to patient." required class="form-control"></textarea></div><button class="btn btn-danger btn-block btn-lg" type="submit" style="color:rgb(255,255,255);background-color:rgb(255,74,85);">Save Record .</button></form>
             </div>
             <div class="modal-footer" style="background-color:#f4c8c8;"><button class="btn btn-warning" type="button" data-dismiss="modal" style="color:rgb(255,255,255);background-color:rgb(255,149,0);">Close</button></div>
+        </div>
+    </div>
+</div>
+<div role="dialog" tabindex="-1" class="modal fade" id = "noResult">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Information !!!</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+            <div class="modal-body">
+                <p style="color:rgb(0,0,0);">No such user was found.</p>
+            </div>
+            <div class="modal-footer"><a href = "docDash.php"><button class="btn btn-danger" >Close</button></a></div>
         </div>
     </div>
 </div>

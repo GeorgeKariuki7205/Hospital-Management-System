@@ -249,13 +249,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col">
+                                <div class="col"><a href = "viewAppointments.php">
                                     <div class="card" style="background:linear-gradient(90deg , #45b649 0%, #dce35b 100%);color:rgb(255,255,255);">
                                         <div class="card-body" style="color:rgb(255,255,255);">
                                             <p style="color:rgb(255,255,255);"><i class="fa fa-book" style="font-size:50px;"></i>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; view&nbsp;</p>
                                             <p style="color:rgb(255,255,255);"><strong>Appointments.</strong></p>
                                         </div>
-                                    </div>
+                                    </div></a>
                                 </div>
                                 <div class="col"><a href = "comments.html">
                                     <div class="card" style="background:linear-gradient(90deg,#3f5efb 0%, #fc466b 100%);">
@@ -286,8 +286,7 @@
                                 <th style="padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;color:rgb(255,255,255);">Patient Name.</th>
                                 <th class="th" style="color:rgb(255,253,253);">Time&nbsp;</th>
                                 <th class="th" style="color:rgb(254,254,254);">Patient Id&nbsp;</th>
-                                <th style="color:rgb(255,246,246);">Appointment Date.</th>
-                                <th style="text-align:center;color:rgb(255,252,252);">ACTIONS.</th>
+                                <th style="color:rgb(255,246,246);">Appointment Date.</th>                               
                             </tr>
                         </thead>
                         <tbody>
@@ -297,7 +296,7 @@
 							       $sql = " select concat(doctor_details.Fname,'  ', doctor_details.Lname) as doctor_names, concat(patient_details.Fname, ' ',patient_details.Lname) as Patient_Name, appointments_booked.time_slot, appointments_booked.appointmant_date from  appointments_booked inner join doctor_details on appointments_booked.doc_id =  doctor_details.doc_id  inner join patient_details on  appointments_booked.patient_id =  patient_details.patient_id ;";
 							        $valid = mysqli_query($conn,$sql);
 									if($valid){
-										echo "valid";
+										
 										while($rows = mysqli_fetch_assoc($valid)){
 											$docName = $rows['doctor_names'];
 											$patNmae = $rows['Patient_Name'];
@@ -309,10 +308,6 @@
                                 <td>$time_slot</td>
 								<td>Nairobi Hoapital</td>
                                 <td>$appointmant_date</td>                                
-                                <td><a class=\"btn btn-success\" role=\"button\" href=\"index.html\" style=\"background-color:#87cb16;color:#ffffff; border-radius:50%;\" title=\"view patient.\" data-toggle=\"tooltip\"><i class=\"fa fa-eye\" style=\"font-size:20px;color:rgb(0,0,0);\"></i></a>
-                                    <a
-                                        class=\"btn btn-secondary\" role=\"button\" href=\"index.tml\" style=\"background-color:#34e8e8;color:#ffffff;border-radius:50%;margin-right:10px;margin-left:10px;\" title=\"delete appointment\" data-toggle=\"tooltip\"><i class=\"fa fa-trash-o\" style=\"font-size:20px;color:rgb(0,0,0);\"></i></a><a class=\"btn btn-success\" role=\"button\" href=\"index,html\" style=\"background-color:#e8449d;color:#ffffff;border-radius:50%;\" title=\"search .\"
-                                            data-toggle=\"tooltip\"><i class=\"fa fa-search\" style=\"font-size:20px;color:rgb(0,0,0);\"></i></a></td>
                             </tr>";
 										}
 									}
@@ -328,8 +323,7 @@
                                 <td><em>Patient Name.</em><br></td>
                                 <td><em>Time&nbsp;</em>&nbsp;<br></td>
                                 <td><em>Patient Id&nbsp;&nbsp;</em><br></td>
-                                <td>Appointment Date</td>
-                                <td><em>ACTIONS .</em><br></td>
+                                <td>Appointment Date</td>                               
                             </tr>
                         </tfoot>
                     </table>
