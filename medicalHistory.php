@@ -1,10 +1,17 @@
 <?php
       session_start();
       include('phpFiles/databaseConnection.php');
-      if($_SERVER['REQUEST_METHOD'] == "POST"){
+      if(isset($_POST['view'])){
+			  
+			  if(isset($_GET['patient_id'])){
+				  echo "view clicked from appointments booked.";
+				  $patient_id = $_GET['patient_id']; 
+			  }
+			  else{
+				  $patient_id = $_POST['patient_id']; 
+			  }
 		  
-		  $patient_id = $_POST['patient_id'];
-
+		  
            $_SESSION['patient_id_set_doctor_search'] = $patient_id;	  
 	  }
 	  else{

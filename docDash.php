@@ -1,5 +1,5 @@
 <?PHP
-
+     session_start();
      include('phpFiles/databaseConnection.php');
 
 ?>
@@ -229,7 +229,7 @@
                         <div class="list-group"><a class="list-group-item list-group-item-action list-group-item-info active"><span><strong>Home</strong></span></a><a class="list-group-item list-group-item-action" href="index.html"><span><strong>Post Avaliability.</strong></span></a>
                             <a
                                 class="list-group-item list-group-item-action active"><span data-toggle="modal" data-target="#ceomodal"><strong>Message CEO.</strong></span></a><a class="list-group-item list-group-item-action" href="login.html"><span><strong>Organ Donation.</strong></span></a><a class="list-group-item list-group-item-action"
-                                    href="login.html"><span><strong>Edit Details.</strong></span></a></div>
+                                    href="doctorDetails.php"><span><strong>Edit Details.</strong></span></a></div>
                     </div>
                 </div>
             </div>
@@ -346,7 +346,7 @@
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="col-sm-6 offset-sm-3"><button class="btn btn-primary btn-block" type="submit" style="background-color:rgb(52,114,247);color:rgb(252,252,252);"><strong>Search</strong></button></div>
+                        <div class="col-sm-6 offset-sm-3"><button class="btn btn-primary btn-block" type="submit" name = "view" style="background-color:rgb(52,114,247);color:rgb(252,252,252);"><strong>Search</strong></button></div>
                     </div>
                 </form>
             </div>
