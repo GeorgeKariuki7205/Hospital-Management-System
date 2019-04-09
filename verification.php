@@ -78,12 +78,6 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 				                 while( $rows = mysqli_fetch_assoc($valid2)){
 					                 $doc_id = $rows['doc_id'];
 					                 $_SESSION['doc_id'] = $doc_id;
-									 echo "good.";
-									 echo "<script>
-									              alert(\"good\");
-												   
-									       </script>";
-										   echo "gooder";
 					                 header('location: docDash.php');
 				                 }
 			                 }
@@ -95,10 +89,25 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 		   }
 		   else{
 			  /*  echo "No user found."; */
-			  header('Location:login.php?errorMessage=1');
+			  $sql3 = "select id from ceo_verification where username = '".$email."' and password = '".$password."'";
+			  $valid3 = mysqli_query($conn,$sql3);
+			  if($valid3){
+				  $number = mysqli_num_rows($valid3); 
+				  if($number == 1){
+					  header('Location:ceo.php');
+				  }
+				  else{
+					   header('Location:login.php?errorMessage=1');
+				  }
+			  }
+			  else{
+				  echo "The second ceo sql query m".mysqli_error($conn);
+			  }
+			 
 		   }
 	   }
    }
+ 
 }
 
 ?>

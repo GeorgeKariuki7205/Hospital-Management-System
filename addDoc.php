@@ -24,10 +24,10 @@
 		 echo "The query has a problem  ". $databaseObject->conn->error;
 	 }
       */
-     if(isset($_POST['updateDetails'])){
+   /*   if(isset($_POST['updateDetails'])){
 		 echo  $_SESSION['doc_id']; 
 	 }
-	 
+	  */
 	 if(isset($_POST['updateDetails'])){
 		 // code to update data
 		 $fName = $_POST['fName'];
@@ -39,15 +39,36 @@
          $reidence = $_POST['reidence'];
          $specialisation = $_POST['specialisation'];
 		 
-		 $sql2 = "update doctor_details set Fname ='". $fName."', Lname = '".$lName."', SurName = '". $SurName."', Date_Of_Birth ='". $dob."',phone_number = $phoneNo,email ='". $emailAdd."' , Residence = '".$reidence."', Specialisation ='". $specialisation ."'where doc_id =". $_SESSION['doc_id'] .";";
+		 //$sql2 = "update doctor_details set Fname ='". $fName."', Lname = '".$lName."', SurName = '". $SurName."', Date_Of_Birth ='". $dob."',phone_number = $phoneNo,email ='". $emailAdd."' , Residence = '".$reidence."', Specialisation ='". $specialisation ."'where doc_id =". $_SESSION['doc_id'] .";";
+		 $sql2 = "insert into doctor_details( Fname, Lname, Surname,Date_Of_Birth, phone_number, email,Residence,Specialisation) values ('". $fName."','".$lName."','".$SurName."','".$dob."','".$phoneNo."','".$emailAdd."','".$reidence."','".$specialisation."');";
+		
 		 $valid2 = $databaseObject->conn->query($sql2);
+		
 		 if($valid2){
-			  echo "<script src=\"assets/js/jquery.min.js\"></script>";
-	   echo "<script>
-	                  $(function(){
-						  $(\"#dataUpdate\").modal();
-					  });
-	   </script>";
+			 $sql4 = "select doc_id from doctor_details group by doc_id desc limit 1";
+			 $valid4 =  $databaseObject->conn->query($sql4);
+			 if(!$valid4){
+				  echo "The query has an error in seelcting the last record".$databaseObject->conn->error;
+			 }
+			 else{
+				 while($rows = $valid4->fetch_object()){
+					 $id = $rows->doc_id;
+					  $sql3 = "insert into doctor_verification (doc_id,username,password) values ('".$id."','".$emailAdd."','".$phoneNo."')";
+					   $valid3 = $databaseObject->conn->query($sql3);
+					   if($valid3){
+						   			  echo "<script src=\"assets/js/jquery.min.js\"></script>";
+	                                  echo "<script>
+	                                            $(function(){
+					                         	  $(\"#dataUpdate\").modal();
+		                          			  });
+	                             </script>";
+					   }
+					   else{
+						   echo "Error in inserting data in doctor verification.".$databaseObject->conn->error;
+					   }
+				 }
+			 }
+
 		 }
 		 else{
 			 echo "The query has an error".$databaseObject->conn->error;
@@ -138,7 +159,7 @@
     </div>
 </div>
         <ol class="breadcrumb" style="background-color:#f1655c;">
-            <li class="breadcrumb-item"><a href="index.php"><span>Home</span></a></li>
+            <li class="breadcrumb-item"><a href="index.html"><span>Home</span></a></li>
             <li class="breadcrumb-item"><a href="ceo.php"><span>CEO DashBoard</span></a></li>
             <li class="breadcrumb-item"><a href="#"><span>Add </span></a></li>
         </ol>
@@ -151,7 +172,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <form method="post" action = "doctorDetails.php">
+                                <form method="post" action = "addDoc.php">
                                     <div class="form-group">
                                         <div class="input-group">
                                             <div class="input-group-prepend"><span class="input-group-text">First Name:</span></div><input class="form-control" type="text" name="fName" value="<?php //echo $Fname;?>" required="" style="font-size:20px;color:rgb(0,0,0);font-family:times new roman;">
@@ -221,7 +242,7 @@
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item" role="presentation"><a class="nav-link" href="#"><strong>Welcome ??Name ?? . Manage Patents eadily</strong></a></li>
-                    </ul><span class="navbar-text actions"> <button class="btn btn-light action-button" type="button" data-toogle="modal" data-target="#modal"><i class="fa fa-sign-out" style="font-size:26px;"></i>Log Out.</button></span>
+                    </ul><span class="navbar-text actions"> <a href = "index.html"> <button class="btn btn-light action-button" type="button" data-toogle="modal" data-target="#modal"><i class="fa fa-sign-out" style="font-size:26px;"></i>Log Out.</button></a></span>
                 </div>
             </div>
         </nav>
@@ -233,9 +254,9 @@
             <div class="modal-header" style="background-color:#a6eb9f;">
                 <h4 class="modal-title">Information !!!!</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
             <div class="modal-body">
-                <p style="color:rgb(0,0,0);">Your personal data has successfully been updated.</p>
+                <p style="color:rgb(0,0,0);">The doctor details have successfully been added. Initial Password is the phone number.</p>
             </div>
-            <div class="modal-footer" style="background-color:#a6eb9f;"><a class="btn btn-primary" role="button" href="doctorDetails.php" style="color:rgb(255,255,255);background-color:rgb(52,114,247);">OK.</a></div>
+            <div class="modal-footer" style="background-color:#a6eb9f;"><a class="btn btn-primary" role="button" href="addDoc.php" style="color:rgb(255,255,255);background-color:rgb(52,114,247);">OK.</a></div>
         </div>
     </div>
 </div>

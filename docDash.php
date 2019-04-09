@@ -31,6 +31,12 @@
 		 echo "query bad.".$databaseConnection->conn->error ;
 	 }
 	 }
+	 
+	 
+	 if(isset($_POST['submitDonation'])){
+		foreach ($_POST['select2'] as $selectedOption)
+          echo $selectedOption."\n";
+	 }
 
 ?>
 <!DOCTYPE html>
@@ -117,7 +123,7 @@
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item" role="presentation"><a class="nav-link" href="#"><strong>Welcome ??Name ?? . Manage Patents eadily</strong></a></li>
-                    </ul><span class="navbar-text actions"> <button class="btn btn-light action-button" type="button" data-toogle="modal" data-target="#modal"><i class="fa fa-sign-out" style="font-size:26px;"></i>Log Out.</button></span>
+                    </ul><span class="navbar-text actions"> <a href = "index.html"> <button class="btn btn-light action-button" type="button" data-toogle="modal" data-target="#modal"><i class="fa fa-sign-out" style="font-size:26px;"></i>Log Out.</button></a></span>
                 </div>
             </div>
         </nav>
@@ -258,7 +264,7 @@
                     <div class="card-body">
                         <div class="list-group"><a class="list-group-item list-group-item-action list-group-item-info active"><span><strong>Home</strong></span></a><a class="list-group-item list-group-item-action" href="index.html" data-target = "#postAvalability" data-toggle = "modal"><span><strong>Post Avaliability.</strong></span></a>
                             <a
-                                class="list-group-item list-group-item-action active"><span data-toggle="modal" data-target="#ceomodal"><strong>Message CEO.</strong></span></a><a class="list-group-item list-group-item-action" href="login.html"><span><strong>Organ Donation.</strong></span></a><a class="list-group-item list-group-item-action"
+                                class="list-group-item list-group-item-action active"><span data-toggle="modal" data-target="#ceomodal"><strong>Message CEO.</strong></span></a><a class="list-group-item list-group-item-action" data-target = "#organDonation" data-toggle = "modal"><span><strong>Organ Donation.</strong></span></a><a class="list-group-item list-group-item-action"
                                     href="doctorDetails.php"><span><strong>Edit Details.</strong></span></a></div>
                     </div>
                 </div>
@@ -361,6 +367,36 @@
             </div>
         </div>
     </div>
+	<div role="dialog" tabindex="-1" class="modal fade" id = "organDonation">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#d2a6a6;">
+                <h4 class="text-center modal-title"><strong>Organ Donation .</strong></h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+            <div class="modal-body" style="background-color:#ebdada;">
+                <form method = "post" action = "docDash.php">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col"><label class="col-form-label">First Name:</label><input type="text" placeholder="First Name" name="firstName" required class="form-control" /></div>
+                            <div class="col"><label class="col-form-label">Middle Name:</label><input type="text" placeholder="Second Name" name="secondName" required class="form-control" /></div>
+                            <div class="col"><label class="col-form-label">Last Name:</label><input type="text" placeholder="Last Name" name="LastName" required class="form-control" /></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col"><label class="col-form-label">Date Of Birth:</label><input type="date" name="date" required class="form-control" /></div>
+                            <div class="col"><label class="col-form-label">Gender:</label><select name="gender" required class="form-control"><option value="Male">Male</option><option value="Female">Female</option></select></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-4 offset-4"><label class="col-form-label">Organs Donated:</label><select multiple required name="select2[]" class="form-control"><option value="Lungs">Lungs</option><option value="Heart">Heart</option><option value="Brain">Brain</option><option value="Bones">Bones</option><option value="Liver">Liver</option></select></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-4 offset-4"><button class="btn btn-success btn-block btn-lg" type="submit" name = "submitDonation" style="color:rgb(255,255,254);background-color:rgb(135,203,22);font-size:22px;margin-top:30px;">Submit Donation .</button></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer" style="background-color:#d2a6a6;"><button class="btn btn-danger btn-lg" type="button" data-dismiss="modal" style="color:rgb(255,255,255);background-color:rgb(255,74,85);">Close</button></div>
+        </div>
+    </div>
+</div>
    <div role="dialog" tabindex="-1" class="modal fade" id="modal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
