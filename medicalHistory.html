@@ -9,7 +9,6 @@
     <title>Hospital</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono">
@@ -52,6 +51,7 @@
     <link rel="stylesheet" href="assets/css/Pretty-Footer-1.css">
     <link rel="stylesheet" href="assets/css/Lightbox-Gallery.css">
     <link rel="stylesheet" href="assets/css/Navbar-Fixed-Side.css">
+    <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/Navigation-with-Button.css">
     <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
     <link rel="stylesheet" href="assets/css/OcOrato---Login-form.css">
@@ -90,14 +90,14 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h2 style="margin-top:0px;font-family:'Gentium Book Basic', serif;">Doctor Dashboard.</h2>
+                <h2 style="margin-top:0px;font-family:'Gentium Book Basic', serif;">CEO Dashboard.</h2>
             </div>
         </div>
         <ol class="breadcrumb" style="background-color:#f1655c;">
             <li class="breadcrumb-item"><a href="index.html"><span>Home</span></a></li>
             <li class="breadcrumb-item"><a href="login.html"><span>Log In</span></a></li>
-            <li class="breadcrumb-item"><a href="docDash.php"><span>Doctor Panel</span></a></li>
-            <li class="breadcrumb-item"><a href="medicalHistory.html"><span>Patient Details &amp; Medical History</span></a></li>
+            <li class="breadcrumb-item"><a href="ceo.php"><span>CEO Panel</span></a></li>
+            <li class="breadcrumb-item"><a><span>Doctor Search</span></a></li>
         </ol>
         <div class="card">
             <div class="card-header" style="background:linear-gradient(90deg,#b5186d, #b51860);color:rgb(254,254,254);">
@@ -141,12 +141,9 @@
                 </div>
             </div>
         </div>
-        <div class="row" style="margin-bottom:2%;">
-            <div class="col-3 offset-9"><button class="btn btn-primary btn-block btn-lg" type="button" style="color:rgb(255,255,255);background-color:rgb(5,75,224);" data-toggle="modal" data-target="#modal"><i class="fa fa-plus" style="font-size:25px;"></i>&nbsp; &nbsp;ADD DECORD</button></div>
-        </div>
         <div class="card">
             <div class="card-header" style="background: linear-gradient(90deg,#b5186d, #b51860);">
-                <h5 class="mb-0" style="color:rgb(247,251,255);">PatientMedical History.</h5>
+                <h5 class="mb-0" style="color:rgb(247,251,255);">Appointmnts made.</h5>
             </div>
             <div class="card-body" style="background-color:#b7e5eb;">
                 <div class="table-responsive">
@@ -154,13 +151,11 @@
                         <caption>Medical Histry Table.</caption>
                         <thead>
                             <tr>
-                                <th>Patient Name</th>
+                                <th>Doctor name</th>
                                 <th>Date</th>
-                                <th>ILLNESS</th>
-                                <th>MEDICATION</th>
-                                <th>SYMPTOMS</th>
-                                <th>MEDICAL CENTER</th>
-                                <th>DOCTOR</th>
+                                <th>start time</th>
+                                <th>end time</th>
+                                <th>hospital</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -175,13 +170,11 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td>PATIENT NAME<br></td>
+                                <td>DOCTOR NAME<br></td>
                                 <td>DATE<br></td>
-                                <td>ILLNESS<br></td>
-                                <td>MEDICATION<br></td>
-                                <td>SYMPTOMS<br></td>
-                                <td>SYMPTOMS<br></td>
-                                <td>DOCTOR<br></td>
+                                <td>Strat Time<br></td>
+                                <td>End Time<br></td>
+                                <td>Hospital<br></td>
                             </tr>
                         </tfoot>
                     </table>
@@ -241,7 +234,7 @@
             <div class="clearfix"></div>
             <div class="col-md-4 footer-about ourDedics">
                 <h4>Site Created and Maintained By :&nbsp;</h4>
-                <h5><strong>JohKariMo Developers</strong></h5>
+                <h5><strong>Mona Developers</strong></h5>
                 <p style="color:rgb(255,255,255);"> A software comapny dedicated to meet All Your Software needs. Contact us or visit us for more to do with development of Web Applications , Android Apps , &nbsp;Home Automatio etc .</p>
                 <div class="social-links social-icons"><a href="facebook.com"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-github"></i></a></div>
             </div>

@@ -35,6 +35,8 @@
 				else{
 				
 			 if($conn){
+				  $last_id = mysqli_insert_id($conn);
+				  $_SESSION['last_id']= $last_id;
 		  $sql = "insert into patient_details(Fname,Lname,SurName,phone_number,email,Residence,birthCertificateNumber,kraNumber,NhifNumber,callTime,Date_Of_Birth) values('".$fname. "','".$lName."','".$surName."','".$phone."','".$email."','".$residence."','".$birthCertNumber."','".$kraNumber."','".$nhifNumber."','".$callTime."','".$date ."');";
 	      $valid = mysqli_query($conn,$sql);
 		  if($valid){
@@ -129,7 +131,7 @@
                                 role="menu"><a class="dropdown-item" role="presentation" href="locations.html"><strong>Nairobi</strong></a><a class="dropdown-item" role="presentation" href="locations.html"><strong>Mombasa</strong></a><a class="dropdown-item" role="presentation"
                                     href="locations.html"><strong>Kisumu</strong></a></div>
                         </li>
-                    </ul><span class="navbar-text actions"> <a href="login.html" class="login" style="color:rgba(55,60,184,0.9);font-family:Times New Roman;"><strong>Patient Log In</strong></a><a class="btn btn-info action-button" role="button" href="sighnup.php" data-bs-hover-animate="bounce">Sign Up</a></span></div>
+                    </ul><span class="navbar-text actions"> <a href="login.php" class="login" style="color:rgba(55,60,184,0.9);font-family:Times New Roman;"><strong>Patient Log In</strong></a><a class="btn btn-info action-button" role="button" href="sighnup.php" data-bs-hover-animate="bounce">Sign Up</a></span></div>
             </div>
         </nav>
     </div>

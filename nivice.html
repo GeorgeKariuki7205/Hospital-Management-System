@@ -9,7 +9,6 @@
     <title>Hospital</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono">
@@ -52,6 +51,7 @@
     <link rel="stylesheet" href="assets/css/Pretty-Footer-1.css">
     <link rel="stylesheet" href="assets/css/Lightbox-Gallery.css">
     <link rel="stylesheet" href="assets/css/Navbar-Fixed-Side.css">
+    <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/Navigation-with-Button.css">
     <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
     <link rel="stylesheet" href="assets/css/OcOrato---Login-form.css">
@@ -90,127 +90,13 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h2 style="margin-top:0px;font-family:'Gentium Book Basic', serif;">Doctor Dashboard.</h2>
+                <h2 style="margin-top:0px;font-family:'Gentium Book Basic', serif;">CEO Dashboard.</h2>
             </div>
-            <div class="col"><div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true" type="submit">
-        SUBMIT <span class="caret"></span>
-    </button>
-    <ul role="menu" class="dropdown-menu">
-    <div id="loginbox" style="margin-top:50px;float:right;" class="mainbox col-md-12 col-sm-8 col-sm-offset-2">                    
-        <div class="panel panel-info" >
-            <div class="panel-heading">
-                <div class="panel-title">Sign In</div>
-                <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>
-            </div>     
-            <div style="padding-top:30px" class="panel-body" >
-                <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-                <form id="loginform" class="form-horizontal" role="form">    
-                    <div style="margin-bottom: 25px" class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email">                                        
-                    </div>
-                            
-                    <div style="margin-bottom: 25px" class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input id="login-password" type="password" class="form-control" name="password" placeholder="password">
-                    </div>
-                                
-                    <div class="input-group">
-                        <div class="checkbox">
-                            <label>
-                                <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
-                            </label>
-                        </div>
-                    </div>
-                    <br>
-                    <div style="margin-top:10px" class="form-group">
-                        <div class="col-sm-12 controls">
-                            <a id="btn-login" href="#" class="btn btn-success">Login  </a>
-                            <a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-12 control">
-                            <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
-                                Don't have an account! 
-                                <a href="#" onClick="event.preventDefault(); $('#loginbox').hide(); $('#signupbox').show()">
-                                    Sign Up Here
-                                </a>
-                            </div>
-                        </div>
-                    </div>    
-                </form>     
-            </div>                     
-        </div>  
-    </div>
-    <div id="signupbox" style="display:none; margin-top:50px" class="mainbox col-md-12 col-sm-8 col-sm-offset-2">
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <div class="panel-title">Sign Up</div>
-                    <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" onclick="event.preventDefault(); $('#signupbox').hide(); $('#loginbox').show()">Sign In</a></div>
-            </div>  
-            <div class="panel-body" >
-                <form id="signupform" class="form-horizontal" role="form">
-                    <div id="signupalert" style="display:none" class="alert alert-danger">
-                        <p>Error:</p>
-                        <span></span>
-                    </div>
-                          
-                    <div class="form-group">
-                        <label for="email" class="col-lg-3 control-label">Email</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" name="email" placeholder="Email Address">
-                        </div>
-                    </div>
-                            
-                    <div class="form-group">
-                        <label for="firstname" class="col-lg-3 control-label">First Name</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" name="firstname" placeholder="First Name">
-                        </div>
-                    </div>
-                        
-                    <div class="form-group">
-                        <label for="lastname" class="col-lg-3 control-label">Last Name</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" name="lastname" placeholder="Last Name">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="password" class="col-lg-3 control-label">Password</label>
-                        <div class="col-md-9">
-                            <input type="password" class="form-control" name="passwd" placeholder="Password">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <div class="col-md-offset-3 col-md-9">
-                            <button id="btn-signup" type="button" class="btn btn-info"><i class="icon-hand-right"></i>Sign Up</button>
-                            <span style="margin-left:8px;">or</span>  
-                        </div>
-                    </div>
-                        
-                    <div style="border-top: 1px solid #999; padding-top:20px"  class="form-group">
-                        <div class="col-md-offset-3 col-md-9">
-                            <button id="btn-fbsignup" type="button" class="btn btn-primary"><i class="icon-facebook"></i>Sign Up with Facebook</button>
-                        </div>                                           
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div> 
-    </ul>
-</div>
-
-</div>
         </div>
         <ol class="breadcrumb" style="background-color:#f1655c;margin-top:10px;">
             <li class="breadcrumb-item"><a href="index.html"><span>Home</span></a></li>
             <li class="breadcrumb-item"><a href="login.html"><span>LogIn&nbsp;</span></a></li>
-            <li class="breadcrumb-item"><a href="nivice.html"><span>Doctor Panel.</span></a></li>
+            <li class="breadcrumb-item"><a href="nivice.html"><span>CEO Panel.</span></a></li>
         </ol>
     </div>
     <div class="container">
@@ -221,10 +107,9 @@
                         <h5 class="mb-0">Navigation&nbsp;</h5>
                     </div>
                     <div class="card-body">
-                        <div class="list-group"><a class="list-group-item list-group-item-action list-group-item-info active"><span><strong>Home</strong></span></a><a class="list-group-item list-group-item-action" href="index.html"><span><strong>Post Avaliability.</strong></span></a>
+                        <div class="list-group"><a class="list-group-item list-group-item-action list-group-item-info active"><span><strong>Home</strong></span></a><a class="list-group-item list-group-item-action"><span data-toggle="modal" data-target="#ceomodal"><strong>Message CEO.</strong></span></a>
                             <a
-                                class="list-group-item list-group-item-action active"><span data-toggle="modal" data-target="#ceomodal"><strong>Message CEO.</strong></span></a><a class="list-group-item list-group-item-action" href="login.html"><span><strong>Organ Donation.</strong></span></a><a class="list-group-item list-group-item-action"
-                                    href="login.html"><span><strong>Edit Details.</strong></span></a></div>
+                                class="list-group-item list-group-item-action" href="login.html"><span><strong>Edit Details.</strong></span></a><a class="list-group-item list-group-item-action" href="login.html"><span><strong>Doctor Table</strong></span></a></div>
                     </div>
                 </div>
             </div>
@@ -240,7 +125,7 @@
                                     <div class="card" data-bs-hover-animate="jello" style="background:linear-gradient(90deg, #11998e 0%, #38ef7d 100%);" data-toggle="modal" data-target="#modal">
                                         <div class="card-body" style="color:rgb(254,255,255);">
                                             <p style="color:rgb(249,249,249);"><i class="fa fa-search" style="font-size:50px;"></i>&nbsp; &nbsp; &nbsp; &nbsp;search for&nbsp;</p>
-                                            <p style="color:rgb(255,252,252);"><strong>Patients</strong></p>
+                                            <p style="color:rgb(255,252,252);"><strong>Doctor</strong></p>
                                         </div>
                                     </div>
                                 </div>

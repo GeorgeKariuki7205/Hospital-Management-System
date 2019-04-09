@@ -30,7 +30,6 @@ session_start();
 	   </script>";   
 	   }
    }
-
 ?>
 <!DOCTYPE html>
 <html>

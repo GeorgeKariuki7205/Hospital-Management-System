@@ -1,4 +1,4 @@
-    <?php session_start();
+ <?php session_start();
 	if($_SERVER['REQUEST_METHOD']== "POST"){
 				   $errors = null;
 	   
@@ -183,7 +183,7 @@
                                 role="menu"><a class="dropdown-item" role="presentation" href="locations.html"><strong>Nairobi</strong></a><a class="dropdown-item" role="presentation" href="locations.html"><strong>Mombasa</strong></a><a class="dropdown-item" role="presentation"
                                     href="locations.html"><strong>Kisumu</strong></a></div>
                         </li>
-                    </ul><span class="navbar-text actions"> <a href="login.html" class="login" style="color:rgba(55,60,184,0.9);font-family:Times New Roman;"><strong>Patient Log In</strong></a><a class="btn btn-info action-button" role="button" href="#" data-bs-hover-animate="bounce">Sign Up</a></span></div>
+                    </ul><span class="navbar-text actions"> <a href="login.php" class="login" style="color:rgba(55,60,184,0.9);font-family:Times New Roman;"><strong>Patient Log In</strong></a><a class="btn btn-info action-button" role="button" href="#" data-bs-hover-animate="bounce">Sign Up</a></span></div>
             </div>
         </nav>
     </div>

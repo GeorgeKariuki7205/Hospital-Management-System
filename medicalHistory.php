@@ -116,7 +116,7 @@
         </div>
         <ol class="breadcrumb" style="background-color:#f1655c;">
             <li class="breadcrumb-item"><a href="index.html"><span>Home</span></a></li>
-            <li class="breadcrumb-item"><a href="login.html"><span>Log In</span></a></li>
+            <li class="breadcrumb-item"><a href="login.php"><span>Log In</span></a></li>
             <li class="breadcrumb-item"><a href="docDash.php"><span>Doctor Panel</span></a></li>
             <li class="breadcrumb-item"><a href="medicalHistory.html"><span>Patient Details &amp; Medical History</span></a></li>
         </ol>

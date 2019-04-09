@@ -6,21 +6,21 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     // echo "THE DATA HAS BEEN SUCCESSFULLY SUPPLIED.";
     $email = $_POST['fName'];
     $password = $_POST['password'];
-    echo $email;
-    echo $password;
+    /* echo $email;
+    echo $password; */
 	
 	// Checking if the user has activated his account.. 
 	
 	$sql1 = "SELECT isEmailVerified from patient details where email = $";
 	 
    $sql = "SELECT pv_id from patient_verification where username = '".$email."' and password = '".$password."'";
-   echo $sql;
+  /*  echo $sql; */
    $valid = mysqli_query($conn,$sql);
    if(!$valid){
 	   die( "SOMETHING WRONG WITH THE QUERY." ).mysqli_error($conn);
    }
    $numRows = mysqli_num_rows($valid);
-   echo $numRows;
+/*    echo $numRows; */
    if($numRows == 1){
 	      // Writing the sql query that will be able to get the id of the patient and set it as a session.
 		  
@@ -78,6 +78,12 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 				                 while( $rows = mysqli_fetch_assoc($valid2)){
 					                 $doc_id = $rows['doc_id'];
 					                 $_SESSION['doc_id'] = $doc_id;
+									 echo "good.";
+									 echo "<script>
+									              alert(\"good\");
+												   
+									       </script>";
+										   echo "gooder";
 					                 header('location: docDash.php');
 				                 }
 			                 }
@@ -88,7 +94,8 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 	                    }			   
 		   }
 		   else{
-			   echo "No user found.";
+			  /*  echo "No user found."; */
+			  header('Location:login.php?errorMessage=1');
 		   }
 	   }
    }

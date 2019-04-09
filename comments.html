@@ -9,7 +9,6 @@
     <title>Hospital</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cutive+Mono">
@@ -52,6 +51,7 @@
     <link rel="stylesheet" href="assets/css/Pretty-Footer-1.css">
     <link rel="stylesheet" href="assets/css/Lightbox-Gallery.css">
     <link rel="stylesheet" href="assets/css/Navbar-Fixed-Side.css">
+    <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/Navigation-with-Button.css">
     <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
     <link rel="stylesheet" href="assets/css/OcOrato---Login-form.css">
@@ -190,6 +190,38 @@
             </div>
         </div>
     </footer>
+    <div class="modal fade" role="dialog" tabindex="-1" id="postAvalability">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#f1bbbb;">
+                    <h4 class="modal-title">POST AVAILABILITY !!!</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body" style="color:rgb(0,0,0);">
+                    <form>
+                        <p style="color:rgb(0,0,0);">Date:&nbsp;</p><input class="form-control" type="date" name="date" required="" style="color:rgb(0,0,0);">
+                        <p style="color:rgb(0,0,0);">Hospital :</p><input class="form-control" type="text" name="hospital" placeholder="hospital" style="color:rgb(0,0,0);">
+                        <p style="color:rgb(0,0,0);">From:&nbsp;</p><select class="form-control" name="from" value="Time"><option value="6:00 am">6:00 am</option><option value="7:00 am" selected="">7:00 am</option><option value="8:00 am">8:00 am</option></select>
+                        <p style="color:rgb(0,0,0);">To :&nbsp;</p><select class="form-control" name="to" value="Time"><option value="4:00pm" selected="">4:00pm</option><option value="5:00pm" selected="">5:00pm</option><option value="6:00 pm">6:00 pm</option></select>
+                        <div class="form-row">
+                            <div class="col-2 offset-5"><button class="btn btn-success" type="button" style="font-size:30px;color:rgb(255,255,255);background-color:#23a702;"><i class="fa fa-thumb-tack" style="font-size:30px;"></i>Post</button></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer" style="background-color:#f4bcbc;"><button class="btn btn-danger" type="button" data-dismiss="modal" style="background-color:rgb(255,74,85);color:rgb(255,255,255);">Close</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="successUpdate">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#5be088;">
+                    <h4 class="modal-title">Congatulations !!!&nbsp;</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <p class="text-center bg-warning" style="color:rgb(0,0,0);">Your Appointment Availability has successfully been updated.&nbsp;</p>
+                </div>
+                <div class="modal-footer" style="background-color:#5be088;"><button class="btn btn-danger" type="button" data-dismiss="modal" style="color:rgb(254,254,254);background-color:rgb(255,74,85);">Close</button></div>
+            </div>
+        </div>
+    </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>

@@ -1,6 +1,36 @@
 <?PHP
      session_start();
      include('phpFiles/databaseConnection.php');
+	 include('includes/databaseConnection.php');
+     include('includes/viewAppointmentsClass.php');
+	 
+	 if(isset($_POST['submitAvailability'])){ 
+	 
+	 // GETTIN THE DATA FROM THE FORM.
+	 
+	 $date= $_POST['date'];
+	 $hospital= $_POST['hospital'];
+	 $from= $_POST['from'];
+	 $to= $_POST['to'];
+	 $doc_id = $_SESSION['doc_id'];
+	 
+	 
+	 $databaseConnection = new database();
+	 $databaseConnection->connect();
+	 $sql = " insert into appointment_availability (doc_id, availability_date, available_from, available_till,hospital_id) values ($doc_id,'". $date ."', '". $from ."', '". $to ."','".$hospital."');";
+	 $valid = $databaseConnection->conn->query($sql);
+	 if($valid){
+		  echo "<script src=\"assets/js/jquery.min.js\"></script>";
+	   echo "<script>
+	                  $(function(){
+						  $(\"#successUpdate\").modal();
+					  });
+	   </script>";
+	 }
+	 else{
+		 echo "query bad.".$databaseConnection->conn->error ;
+	 }
+	 }
 
 ?>
 <!DOCTYPE html>
@@ -214,7 +244,7 @@
         </div>
         <ol class="breadcrumb" style="background-color:#f1655c;margin-top:10px;">
             <li class="breadcrumb-item"><a href="index.html"><span>Home</span></a></li>
-            <li class="breadcrumb-item"><a href="login.html"><span>LogIn&nbsp;</span></a></li>
+            <li class="breadcrumb-item"><a href="login.php"><span>LogIn&nbsp;</span></a></li>
             <li class="breadcrumb-item"><a href="nivice.html"><span>Doctor Panel.</span></a></li>
         </ol>
     </div>
@@ -226,7 +256,7 @@
                         <h5 class="mb-0">Navigation&nbsp;</h5>
                     </div>
                     <div class="card-body">
-                        <div class="list-group"><a class="list-group-item list-group-item-action list-group-item-info active"><span><strong>Home</strong></span></a><a class="list-group-item list-group-item-action" href="index.html"><span><strong>Post Avaliability.</strong></span></a>
+                        <div class="list-group"><a class="list-group-item list-group-item-action list-group-item-info active"><span><strong>Home</strong></span></a><a class="list-group-item list-group-item-action" href="index.html" data-target = "#postAvalability" data-toggle = "modal"><span><strong>Post Avaliability.</strong></span></a>
                             <a
                                 class="list-group-item list-group-item-action active"><span data-toggle="modal" data-target="#ceomodal"><strong>Message CEO.</strong></span></a><a class="list-group-item list-group-item-action" href="login.html"><span><strong>Organ Donation.</strong></span></a><a class="list-group-item list-group-item-action"
                                     href="doctorDetails.php"><span><strong>Edit Details.</strong></span></a></div>
@@ -374,6 +404,38 @@
             </div>
         </div>
     </div>
+	<div role="dialog" tabindex="-1" class="modal fade" id="postAvalability">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#f1bbbb;">
+                <h4 class="modal-title">POST AVAILABILITY !!!</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+            <div class="modal-body" style="color:rgb(0,0,0);">
+                <form action = "docDash.php" method = "post">
+                    <p style="color:rgb(0,0,0);">Date:</p><input type="date" required name="date" class="form-control" style="color:rgb(0,0,0);" name = "date"/>
+                    <p style="color:rgb(0,0,0);">Hospital :</p><input type="text" name="hospital" placeholder="hospital" class="form-control" style="color:rgb(0,0,0);" name = "hospital"/>
+                    <p style="color:rgb(0,0,0);">From:</p><select name="from" value="Time" class="form-control"><option value="6:00 am">6:00 am</option><option value="7:00 am" selected>7:00 am</option><option value="8:00 am">8:00 am</option></select>
+                    <p style="color:rgb(0,0,0);">To :</p><select name="to" value="Time" class="form-control"><option value="4:00pm" selected>4:00pm</option><option value="5:00pm" selected>5:00pm</option><option value="6:00 pm">6:00 pm</option></select>
+                    <div class="form-row">
+                    <div class="col-2 offset-5"><button class="btn btn-success" type="submit" style="font-size:30px;color:rgb(255,255,255);background-color:#23a702;" name = "submitAvailability"><i class="fa fa-thumb-tack" style="font-size:30px;"></i>Post</button></div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer" style="background-color:#f4bcbc;"><button class="btn btn-danger" type="button" data-dismiss="modal" style="background-color:rgb(255,74,85);color:rgb(255,255,255);">Close</button></div>
+        </div>
+    </div>
+</div>
+<div role="dialog" tabindex="-1" class="modal fade " id="successUpdate">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#5be088;">
+                <h4 class="modal-title">Congatulations !!!</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+            <div class="modal-body">
+                <p class="text-center bg-warning" style="color:rgb(0,0,0);">Your Appointment Availability has successfully been updated.</p>
+            </div>
+            <div class="modal-footer" style="background-color:#5be088;"><button class="btn btn-danger" type="button" data-dismiss="modal" style="color:rgb(254,254,254);background-color:rgb(255,74,85);">Close</button></div>
+        </div>
+    </div>
+</div>
     <footer class="footer" style="background-color:#1aa0be;">
         <div class="row">
             <div class="col-sm-6 col-md-4 footer-navigation">
