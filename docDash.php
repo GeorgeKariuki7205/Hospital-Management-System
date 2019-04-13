@@ -34,8 +34,31 @@
 	 
 	 
 	 if(isset($_POST['submitDonation'])){
-		foreach ($_POST['select2'] as $selectedOption)
-          echo $selectedOption."\n";
+		$select2 = $_POST['select2'];
+        $firstName = $_POST['firstName'];
+        $secondName = $_POST['secondName'];
+        $LastName = $_POST['LastName'];
+        $date = $_POST['date'];
+        $gender = $_POST['gender'];
+		$sql = "insert into organ_donation  (Fname,Lname,Sname,gender,date_registered,organ_donated) values ('". $firstName."','".$secondName."','".$LastName."','".$gender."','".$date."','".$select2."')";
+		
+		if($conn){
+			$valid = mysqli_query($conn,$sql);
+			if($valid){
+				 echo "<script src=\"assets/js/jquery.min.js\"></script>";
+	               echo "<script>
+	                              $(function(){
+						              $(\"#organDonationConfirmation\").modal();
+					              });
+	                     </script>";
+			}
+			else{
+				echo "The insertion query has a problem".mysqli_error($conn);
+			}
+		}
+		else{
+			echo "database connection terminated.";
+		}
 	 }
 
 ?>
@@ -121,9 +144,17 @@
             <div class="container-fluid"><a class="navbar-brand" href="#" style="font-size:30px;font-family:&quot;Tmes  New Roman&quot;;"><i class="fa fa-stethoscope" style="font-size:50px;color:rgb(255,10,10);"></i>&nbsp; &nbsp;Hospiatal System.</a><button class="navbar-toggler"
                     data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navcol-1">
-                    <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="#"><strong>Welcome ??Name ?? . Manage Patents eadily</strong></a></li>
-                    </ul><span class="navbar-text actions"> <a href = "index.html"> <button class="btn btn-light action-button" type="button" data-toogle="modal" data-target="#modal"><i class="fa fa-sign-out" style="font-size:26px;"></i>Log Out.</button></a></span>
+                <ul class="nav navbar-right">
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="index.html" style="color:rgb(11,12,12);font-size:20px;font-family:Times New Roman;"><strong>Home .</strong></a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="about.html" style="color:rgb(0,0,0);font-size:20px;font-family:Times New Roman;"><strong>About </strong>.</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="contacts.html" style="color:rgb(1,1,1);font-size:20px;font-family:Times New Roman;"><strong>Contacts.</strong></a></li>
+                          <li><a href="index.html" class="btn btn-light action-button" type="button" data-toogle="modal" data-target="#modal">
+                            <i class="fa fa-sign-out" style="font-size:26px; color:red;">Log Out.</i>
+                            
+                        </a></li>  
+                        
+                    </ul>
+					
                 </div>
             </div>
         </nav>
@@ -134,9 +165,7 @@
                 <h2 style="margin-top:0px;font-family:'Gentium Book Basic', serif;">Doctor Dashboard.</h2>
             </div>
             <div class="col"><div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true" type="submit">
-        SUBMIT <span class="caret"></span>
-    </button>
+   
     <ul role="menu" class="dropdown-menu">
     <div id="loginbox" style="margin-top:50px;float:right;" class="mainbox col-md-12 col-sm-8 col-sm-offset-2">                    
         <div class="panel panel-info" >
@@ -248,11 +277,7 @@
 
 </div>
         </div>
-        <ol class="breadcrumb" style="background-color:#f1655c;margin-top:10px;">
-            <li class="breadcrumb-item"><a href="index.html"><span>Home</span></a></li>
-            <li class="breadcrumb-item"><a href="login.php"><span>LogIn&nbsp;</span></a></li>
-            <li class="breadcrumb-item"><a href="nivice.html"><span>Doctor Panel.</span></a></li>
-        </ol>
+       
     </div>
     <div class="container">
         <div class="row">
@@ -263,9 +288,10 @@
                     </div>
                     <div class="card-body">
                         <div class="list-group"><a class="list-group-item list-group-item-action list-group-item-info active"><span><strong>Home</strong></span></a><a class="list-group-item list-group-item-action" href="index.html" data-target = "#postAvalability" data-toggle = "modal"><span><strong>Post Avaliability.</strong></span></a>
-                            <a
-                                class="list-group-item list-group-item-action active"><span data-toggle="modal" data-target="#ceomodal"><strong>Message CEO.</strong></span></a><a class="list-group-item list-group-item-action" data-target = "#organDonation" data-toggle = "modal"><span><strong>Organ Donation.</strong></span></a><a class="list-group-item list-group-item-action"
-                                    href="doctorDetails.php"><span><strong>Edit Details.</strong></span></a></div>
+                            
+								<a class="list-group-item list-group-item-action" data-target = "#organDonation" data-toggle = "modal"><span>
+								<strong>Organ Donation.</strong></span></a><a class="list-group-item list-group-item-action"
+                                    href="doctorDetails.php"><span><strong>Edit Details.</strong></span></a><a class="list-group-item list-group-item-action" href = "viewOrgans.php"><span><strong>List of Organs..</strong></span></a></div>
                     </div>
                 </div>
             </div>
@@ -293,13 +319,7 @@
                                         </div>
                                     </div></a>
                                 </div>
-                                <div class="col"><a href = "comments.html">
-                                    <div class="card" style="background:linear-gradient(90deg,#3f5efb 0%, #fc466b 100%);">
-                                        <div class="card-body">
-                                            <p style="color:rgb(255,255,255);"><i class="fa fa-comments" style="font-size:50px;"></i>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Message</p>
-                                            <p style="color:rgb(255,255,255);"><strong>Board.</strong></p>
-                                        </div>
-                                    </div></a></div>
+                               
                             </div>
                         </div>
                     </div>
@@ -329,7 +349,7 @@
 						
 						    <?php
 							
-							       $sql = " select concat(doctor_details.Fname,'  ', doctor_details.Lname) as doctor_names, concat(patient_details.Fname, ' ',patient_details.Lname) as Patient_Name, appointments_booked.time_slot, appointments_booked.appointmant_date from  appointments_booked inner join doctor_details on appointments_booked.doc_id =  doctor_details.doc_id  inner join patient_details on  appointments_booked.patient_id =  patient_details.patient_id ;";
+							       $sql = " select concat(doctor_details.Fname,'  ', doctor_details.Lname) as doctor_names, concat(patient_details.Fname, ' ',patient_details.Lname) as Patient_Name, appointments_booked.time_slot, appointments_booked.appointmant_date from  appointments_booked inner join doctor_details on appointments_booked.doc_id =  doctor_details.doc_id  inner join patient_details on  appointments_booked.patient_id =  patient_details.patient_id where doctor_details.doc_id = ".$_SESSION['doc_id'].";";
 							        $valid = mysqli_query($conn,$sql);
 									if($valid){
 										
@@ -367,6 +387,18 @@
             </div>
         </div>
     </div>
+	  <div role="dialog" tabindex="-1" class="modal fade" id="organDonationConfirmation">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#1aa0be;">
+                <h4 class="modal-title">Confirmation !!!</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+            <div class="modal-body">
+                <p style="color:rgb(0,0,0);">You have Successfully Added Organ Donation.</p>
+            </div>
+            <div class="modal-footer" style="background-color:#1aa0be;"><button class="btn btn-danger" type="button" data-dismiss="modal" style="color:rgb(255,255,255);background-color:rgb(255,74,85);">Close</button></div>
+        </div>
+    </div>
+</div> 
 	<div role="dialog" tabindex="-1" class="modal fade" id = "organDonation">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -385,7 +417,7 @@
                             <div class="col"><label class="col-form-label">Gender:</label><select name="gender" required class="form-control"><option value="Male">Male</option><option value="Female">Female</option></select></div>
                         </div>
                         <div class="form-row">
-                            <div class="col-4 offset-4"><label class="col-form-label">Organs Donated:</label><select multiple required name="select2[]" class="form-control"><option value="Lungs">Lungs</option><option value="Heart">Heart</option><option value="Brain">Brain</option><option value="Bones">Bones</option><option value="Liver">Liver</option></select></div>
+                            <div class="col-4 offset-4"><label class="col-form-label">Organs Donated:</label><select  required name="select2" class="form-control"><option value="Lungs">Lungs</option><option value="Heart">Heart</option><option value="Brain">Brain</option><option value="Bones">Bones</option><option value="Liver">Liver</option></select></div>
                         </div>
                         <div class="form-row">
                             <div class="col-4 offset-4"><button class="btn btn-success btn-block btn-lg" type="submit" name = "submitDonation" style="color:rgb(255,255,254);background-color:rgb(135,203,22);font-size:22px;margin-top:30px;">Submit Donation .</button></div>
@@ -448,9 +480,9 @@
             <div class="modal-body" style="color:rgb(0,0,0);">
                 <form action = "docDash.php" method = "post">
                     <p style="color:rgb(0,0,0);">Date:</p><input type="date" required name="date" class="form-control" style="color:rgb(0,0,0);" name = "date"/>
-                    <p style="color:rgb(0,0,0);">Hospital :</p><input type="text" name="hospital" placeholder="hospital" class="form-control" style="color:rgb(0,0,0);" name = "hospital"/>
-                    <p style="color:rgb(0,0,0);">From:</p><select name="from" value="Time" class="form-control"><option value="6:00 am">6:00 am</option><option value="7:00 am" selected>7:00 am</option><option value="8:00 am">8:00 am</option></select>
-                    <p style="color:rgb(0,0,0);">To :</p><select name="to" value="Time" class="form-control"><option value="4:00pm" selected>4:00pm</option><option value="5:00pm" selected>5:00pm</option><option value="6:00 pm">6:00 pm</option></select>
+                    <p style="color:rgb(0,0,0);">Hospital :</p><select name="hospital"><option value="1">Kiambu Hospital</option><option value="2">Kisumu County General Hospital</option><option value="3">Kibiko Hospital</option><option value="4">Siaya General Hospital</option><option value="5">Kajiado Referal Hospital</option><option value="6">Moi Teaching Referal Hospital</option><option value="7">Taita General Referal Hospital</option></select>
+                    <p style="color:rgb(0,0,0);">From:</p><select name="from" value="Time" class="form-control"><option value="6:00 am">6:00 am</option><option value="7:00 am" selected>7:00 am</option><option value="8:00 am">8:00 am</option><option value="8:00 am">8:00 am</option><option value="9:00 am">9:00 am</option><option value="10:00 am">10:00 am</option><option value="11:00 am">11:00 am</option><option value="12:00 am">12:00 am</option><option value="1:00 pm">1:00 pm</option><option value="2:00 pm">2:00 pm</option><option value="3:00 pm">3:00 pm</option><option value="4:00 pm">4:00 pm</option></select>
+                    <p style="color:rgb(0,0,0);">To :</p><select name="to" value="Time" class="form-control"><option value="7:00am" selected>7:000am</option><option value="8:00am" selected>8:00 am </option><option value="9:00 am">9:00 am</option><option value="10:00 am">10:00 am</option><option value="11:00 am">11:00 am</option><option value="12:00 am">12:00 am</option><option value="1:00 pm">1:00 pm</option><option value="2:00 pm">2:00 pm</option><option value="3:00 pm">3:00 pm</option><option value="4:00 pm">4:00 pm</option><option value="5:00 pm">5:00 pm</option></select>
                     <div class="form-row">
                     <div class="col-2 offset-5"><button class="btn btn-success" type="submit" style="font-size:30px;color:rgb(255,255,255);background-color:#23a702;" name = "submitAvailability"><i class="fa fa-thumb-tack" style="font-size:30px;"></i>Post</button></div>
                     </div>

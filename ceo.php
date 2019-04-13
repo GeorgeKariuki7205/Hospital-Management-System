@@ -9,6 +9,26 @@
 		 header('Location: doctorSearch.php?doctorid='.$doctorid.'');
 	 }
 	 
+	 if(isset($_POST['addHospital'])){
+		 $name = $_POST['name'];
+		 $level = $_POST['level'];
+		 $location = $_POST['location'];
+         $sql = "insert into  hospital_details (hospital_name,level,location) values ('". $name."',".$level.",'".$location."')";
+		 
+		 if($conn){
+			 $valid = mysqli_query($conn,$sql);
+			 if($valid){
+				 echo "added.";
+			 }
+			 else{
+				 echo "The sql query has a problem.".mysqli_error($conn);
+			 }
+		 }
+		 else{
+			 echo "database connection_aborted";
+		 }
+	 }
+	 
 ?>
 <!DOCTYPE html>
 <html>
@@ -121,7 +141,7 @@
                     <div class="card-body">
                         <div class="list-group"><a class="list-group-item list-group-item-action list-group-item-info active"><span><strong>Home</strong></span></a><a class="list-group-item list-group-item-action" href = "addDoc.php"><span><strong>Add Doctor.</strong></span></a>
                             <a
-                                class="list-group-item list-group-item-action" href="edit.php"><span><strong>Edit Details.</strong></span></a><a class="list-group-item list-group-item-action" href="doctor.php"><span><strong>Doctor Table</strong></span></a></div>
+                                class="list-group-item list-group-item-action" data-target = "#addHospital" data-toggle = "modal"><span><strong>Add Hospital</strong></span></a><a class="list-group-item list-group-item-action" href="doctor.php"><span><strong>Doctor Table</strong></span></a></div>
                     </div>
                 </div>
             </div>
@@ -223,6 +243,35 @@
             </div>
         </div>
     </div>
+	<div role="dialog" tabindex="-1" class="modal fade" id="addHospital">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#1aa0be;">
+                <h4 class="modal-title">Add Hospital:</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+            <div class="modal-body" style="background-color:#efe8e8;">
+                <form action="ceo.php" method="post">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text"><strong>Name:</strong></span></div><input type="text" class="form-control"  required placeholder = "Name." name = "name"/>
+                            <div class="input-group-append"></div>
+                        </div>
+                    </div>
+                   <div class="form-group"><label><strong>Hospital Level:</strong></label><select class="form-control" name="level"><option value="4">Level 4</option><option value="5">Level 5</option></select></div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text"><strong>Location :</strong></span></div><input type="text" class="form-control" name = "location" required placeholder = "Location."/>
+                            <div class="input-group-append"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-6 offset-3"><button class="btn btn-success btn-block btn-lg" type="submit" style="color:rgb(255,255,255);background-color:rgb(103,161,7);" name = "addHospital"><strong>Add Hospital</strong></button></div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer" style="background-color:#1aa0be;"><button class="btn btn-danger" type="button" data-dismiss="modal" style="color:rgb(255,254,254);background-color:rgb(255,74,85);">Close</button></div>
+        </div>
+    </div>
+</div>
     <div class="modal fade" role="dialog" tabindex="-1" id="modal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

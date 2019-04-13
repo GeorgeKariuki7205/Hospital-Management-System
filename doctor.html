@@ -187,6 +187,40 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="confirm">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#f7bfbf;">
+                    <h4 class="modal-title">Confirm Your Booking.</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <p style="color:rgb(0,0,0);">Name:&nbsp;</p>
+                    <p style="color:rgb(0,0,0);">Doctor Name:&nbsp;</p>
+                    <p style="color:rgb(0,0,0);">Date Name:&nbsp;</p>
+                    <p style="color:rgb(0,0,0);">Hospital Name:&nbsp;</p>
+                    <form action="confirmBooking.php" method="post">
+                        <div class="form-row">
+                            <div class="col-4 offset-4">
+                                <div class="form-group"><button class="btn btn-success" type="submit" style="color:rgb(255,255,255);background-color:rgb(135,203,22);">Book Appointment.</button></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer" style="background-color:#f7bfbf;"><button class="btn btn-danger" type="button" data-dismiss="modal" style="color:rgb(255,255,255);background-color:rgb(255,74,85);">Close</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="confirmationOfDetails">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#1aa0be;">
+                    <h4 class="modal-title">Confirmation !!!&nbsp;</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <p style="color:rgb(0,0,0);">You have Successfully Updated Detail</p>
+                </div>
+                <div class="modal-footer" style="background-color:#1aa0be;"><button class="btn btn-danger" type="button" data-dismiss="modal" style="color:rgb(255,255,255);background-color:rgb(255,74,85);">Close</button></div>
+            </div>
+        </div>
+    </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>

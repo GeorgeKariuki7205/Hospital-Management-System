@@ -5,7 +5,7 @@
 	 public function getAppointments(){
 		     $this->databaseConnection = new database();
 		     $this->databaseConnection->connect();
-			 $sql = " select concat(doctor_details.Fname,'  ', doctor_details.Lname) as doctor_names, appointments_booked.appointment_id as appointment_id,appointments_booked.patient_id as patient_id, concat(patient_details.Fname, ' ',patient_details.Lname) as Patient_Name, concat(appointments_booked.appointmant_date , '  ', appointments_booked.time_slot) as timeDate from  appointments_booked inner join doctor_details on appointments_booked.doc_id =  doctor_details.doc_id  inner join patient_details on  appointments_booked.patient_id =  patient_details.patient_id ;";
+			 $sql = " select concat(doctor_details.Fname,'  ', doctor_details.Lname) as doctor_names, appointments_booked.appointment_id as appointment_id,appointments_booked.patient_id as patient_id, concat(patient_details.Fname, ' ',patient_details.Lname) as Patient_Name, concat(appointments_booked.appointmant_date , '  ', appointments_booked.time_slot) as timeDate from  appointments_booked inner join doctor_details on appointments_booked.doc_id =  doctor_details.doc_id  inner join patient_details on  appointments_booked.patient_id =  patient_details.patient_id where doctor_details.doc_id = ".$_SESSION['doc_id'].";";
 	         $valid = $this->databaseConnection->conn->query($sql);
 	  if(!$valid){
 		  echo "The query execution is wrong." . $valid->error;  
