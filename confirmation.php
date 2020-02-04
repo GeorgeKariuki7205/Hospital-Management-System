@@ -44,8 +44,9 @@
 			  header('Location:setpassword.html'); 
 		  }
 		  else{
-			  mysqli_error($conn);
-		  }
+              mysqli_error($conn);
+              echo "not inserted";
+            		  }
 	  }
 	  else{
 		  die("The database connection was not successful.");
